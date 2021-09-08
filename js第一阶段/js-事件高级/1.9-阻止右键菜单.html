@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            border: 1px solid red;
+            width: 150px;
+            display: none;
+            position: absolute;
+            list-style: none;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        //给整个文档绑定一个右键菜单
+        //oncontextmenu 右键触发事件
+        var ul = document.querySelector('ul');
+        document.oncontextmenu = function(ev){
+            console.log('右键触发了');
+            ul.style.display = 'block';
+            ul.style.top = ev.clientY + 'px';
+            ul.style.left = ev.clientX + 'px';
+            //阻止默认行为
+            ev.preventDefault();
+        }
+    </script>
+</body>
+</html>

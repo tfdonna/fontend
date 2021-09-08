@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘宝tab栏</title>
+    <style>
+        /* 浏览器默认样式清除 */
+        html, body, ul, li, p ,div, span, img{
+            padding: 0;
+            margin: 0;
+        }
+        ul, li{
+            list-style: none;
+        }
+        .tab{
+            width: 600px;
+            /*border: 1px solid grey;*/
+            margin: auto;
+            margin-top: 100px
+        }
+        .tab_list{
+            height: 40px;
+            line-height: 39px;
+            background-color: #eee;
+            border: 1px solid rgb(185, 184, 184);
+        }
+        .tab_list ul{
+            display: flex;
+        }
+        .tab_list ul li{
+            padding-left: 20px;
+            padding-right: 20px;
+            border-right: 1px solid rgb(185, 184, 184);
+        }
+        .tab_list ul li.intro{
+            border-top: 2px solid rgb(219, 28, 28) ;
+            background: white;
+            color: rgb(219, 28, 28);
+        }
+        .tab_con{
+            border-left: 1px solid rgb(185, 184, 184);
+            border-right: 1px solid rgb(185, 184, 184);
+            border-bottom: 1px solid rgb(185, 184, 184);
+            height: 300px;
+        }
+        .tab_con .item{
+            display: none;
+        }
+        img{
+            width:40%;
+            margin: 10px 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="intro" key='1'>宝贝详情</li>
+                <li key='2'>累计评论</li>
+                <li key='3'>专享服务</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">&nbsp;<img src="../img/喵喵.jpg"/></div>
+            <div class="item"><img src="../img/狗子.jpg"/></div>
+            <div class="item"><img src="../img/狗子1.jpg"/></div>
+            <div class="item"><img src="../img/猫狗.jpg"/></div>
+        </div>
+    </div>
+    <script>
+        //1.获取事件源
+        var li = document.querySelector('.tab_list').querySelectorAll('li');
+        var div = document.querySelector('.tab_con').querySelectorAll('div')
+        //2. 绑定事件
+        //js中对数组绑定事件要使用循环
+        for( var i = 0; i < li.length; i++){
+            li[i].onclick = function(){
+                //3. 排他
+                for(var j = 0; j < li.length; j++){
+                    li[j].className = '';
+                }
+                this.className = 'intro';
+                //下面需要显示对应的内容
+                for(var k = 0; k < div.length; k++){
+                    div[k].style.display = 'none';
+                }
+                //单独设置某一个
+                //互殴去了li的key谁能够，而这个属性刚好是div的下标
+                var key = this.getAttribute('key');
+                div[key].style.display = 'block';
+
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入收到的验证码"/>
+    <button>获取验证码</button>
+
+    <script>
+        //1. 获取 dom节点 事件源
+        var input = document.querySelector('input');
+        var btn = document.querySelector('button');
+
+        //2. 给btn绑定事件
+        btn.onclick = function(){
+            //点击后按钮需要被禁用
+            btn.disabled = 'disabled';
+
+            //创建 保存到倒计时的值的变量
+            var num = 10;
+
+            //使用定时器，每隔1秒就调用一次
+            var time = setInterval(function(){
+                num--;
+                btn.innerHTML = '重新获取('+ num +'s)';
+                //如果 num为1，停止定时器
+                if(num == 0){
+                    clearInterval(time);
+                    btn.innerHTML = '获取验证码';
+                    btn.disabled = '';
+                }
+            }, 1000);
+
+        }
+    </script>
+</body>
+</html>

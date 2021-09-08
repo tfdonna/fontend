@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘宝右侧的快捷菜单</title>
+    <style>
+        .box{
+            width: 1000px;
+            height: 2000px;
+            background: lightblue;
+            margin: auto;
+            position: relative;
+        }
+        .menu{
+            position: absolute;
+            width: 50px;
+            height: 200px;
+            border: 1px solid green;
+            top: 400px;
+            right: -60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="menu">我是快捷菜单</div>
+    </div>
+    <script>
+        //resize 窗口的大小变化时会触发的事件
+        // window.addEventListener('resize', function(){
+        //     console.log('change!');
+        // })
+
+
+        //1. get dom
+        var menu = document.querySelector('.menu');
+        window.onresize = function(){
+            console.log(window.innerWidth);
+            if(window.innerWidth <= 1100){
+                menu.style.display = 'none';
+            }else{
+                menu.style.display = 'block';
+            }
+        }
+
+
+    </script>
+</body>
+</html>

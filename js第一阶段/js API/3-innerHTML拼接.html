@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(){
+            var d1 = +new Date();
+            var str = ''; //拼接字符串的额初始化
+            for (var i = 0; i < 100; i++){
+                //str += '<div style="color:red; border:1px solid blue">aaa</div>';
+                //上面的写法很耗性能
+
+                document.body.innerHTML += '<div style="color:red; border:1px solid blue">aaa</div>';
+            }
+            //document.body.innerHTML = str;
+            var d2 = +new Date();
+            console.log(d2-d1);
+        }
+
+        //innerHTML数组拼接   最快的  其次是创建节点（createElement），最慢的是字符串拼接方式
+        //innerHTML数组拼接
+        function fn(){
+            var d1 = +new Date();
+            var myarr = [];
+            for (var i = 0; i < 100; i++){
+                myarr.push('<div style="color:red; border:1px solid blue">aaa</div>');
+            }
+            //document.body.innerHTML = str;
+            document.body.innerHTML = myarr.join('');
+            var d2 = +new Date();
+            console.log(d2-d1);
+        }
+    </script>
+</body>
+</html>

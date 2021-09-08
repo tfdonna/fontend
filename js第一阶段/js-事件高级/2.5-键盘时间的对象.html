@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件的对象和使用键盘是小方块移动</title>
+    <style>
+        .box{
+            width: 50px;
+            height: 50px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    </div>
+
+    <script>
+        //键盘事件的对象
+        document.addEventListener('keyup', function(ev){
+            //console.log(ev.keyCode);
+        })
+
+        //使用键盘是小方块移动
+        var box = document.querySelector('.box');
+        document.addEventListener('keydown', function(ev){
+            console.log(ev.keyCode);
+            console.log(box.offsetLeft);
+            console.log(box.offsetTop);
+            switch(ev.keyCode){
+                case 37:
+                    //console.log('←');
+                    box.style.left = box.offsetLeft - 10 + 'px';
+                    break;
+                case 38:
+                    //console.log('↑');
+                    box.style.left = box.offsetTop - 10 + 'px';
+                    break;
+                case 39:
+                    //console.log('→');
+                    box.style.left = box.offsetLeft + 10 + 'px';
+                    break;
+                case 40:
+                    //console.log('↓');
+                    box.style.left = box.offsetTop + 10 + 'px';
+                    break;
+                default:
+                    console.log('你的按键有问题');
+            }
+        })
+
+    </script>
+</body>
+</html>

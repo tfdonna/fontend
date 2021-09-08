@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Animal(name, type){
+            this.name = name;
+            this.type = type;
+            this.swimming = function(){
+                console.log(this.name + '在冲浪！');
+            }
+            
+        }
+         Animal.prototype.eating = function (food){
+             console.log(this.name + '在吃' + food);
+         }
+        // Animal.prototype.swimming = function (){
+        //     console.log(this.name + '在游泳');
+        // }
+        // Animal.prototype = {
+        //     swimming:function(){
+        //         console.log(this.name +'在游泳');
+        //     },
+        //     eating:function(food){
+        //         console.log(this.name + '在吃' + food);
+        //     }
+        // }
+
+        //实例化
+        var smy = new Animal('西蒙', '萨摩耶');
+        var td = new Animal('taidi', 'taidi');
+
+        smy.swimming();
+        smy.eating('草');
+
+        console.log(smy);
+        console.log(smy.toString());
+
+        //console.log(smy.aa()); //aa这个方法在对象及父级
+
+
+        //原型链成员查找规
+
+        function fn(x,y){
+            console.log(this);//谁调用函数的就指向谁   window
+        }
+        fn(4,5);
+
+
+        //继承方法
+        function Parent(name, age){
+            this.name = name;
+            this.age = age;
+            this.money = function(num){
+                console.log(this.name + num + '元资产');
+            }
+        }
+        function Son(name, age, score){
+            this.score = score;
+            //this.name = name;
+            //this.age = age;
+            Parent.call(this, name, age); //way 1 继承
+            //Parent.apply(this, [name, age]);
+            this.scoreFunc = function(){
+                console.log(this.name + '的成绩' + this.score);
+            }
+        }
+        var son = new Son('simon', 30, 100);
+        son.scoreFunc();
+        son.money('3000w');
+
+        //对于父级原型对象上的方法，该怎么调用
+        //注意：这样写的作用：将parent原型对象赋值给 son的原型，在son中可以找到 他的父级构造函数的原型对
+
+        son.prototype = new Parent();
+        
+
+
+    </script>
+</body>
+</html>

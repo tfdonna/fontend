@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 浏览器默认样式清除 */
+        html, body, ul, li, p ,div, span, img{
+            padding: 0;
+            margin: 0;
+        }
+        ul, li{
+            list-style: none;
+        }
+        .tab{
+            width: 600px;
+            /*border: 1px solid grey;*/
+            margin: auto;
+            margin-top: 100px
+        }
+        .tab_list{
+            height: 50px;
+            line-height: 50px;
+            background-color: #eee;
+            border-bottom: 2px solid rgb(124, 10, 10);
+        }
+        .tab_list ul{
+            display: flex;
+        }
+        .tab_list ul li{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .tab_list ul li.intro{
+            background: rgb(124, 10, 10);
+            color: snow;
+        }
+        .tab_con{
+            border-left: 1px solid rgb(124, 10, 10);
+            border-right: 1px solid rgb(124, 10, 10);
+            border-bottom: 1px solid rgb(124, 10, 10);
+            height: 300px;
+        }
+        .tab_con .item{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="intro" key='1'>商品介绍</li>
+                <li key='2'>规格与包装</li>
+                <li key='3'>售后保障</li>
+                <li key='4'>商品评价</li>
+            </ul>
+        </div>
+
+        <div class="tab_con">
+            <div class="item" key='1' style="display: block;">111</div>
+            <div class="item">222</div>
+            <div class="item">333</div>
+            <div class="item">444</div>
+            <div class="item">555</div>
+        </div>
+    </div>
+    <script>
+        //1.获取事件源
+        var li = document.querySelector('.tab_list').querySelectorAll('li');
+        var div = document.querySelector('.tab_con').querySelectorAll('div')
+        //2. 绑定事件
+        //js中对数组绑定事件要使用循环
+        for( var i = 0; i < li.length; i++){
+            li[i].onclick = function(){
+                //3. 排他
+                for(var j = 0; j < li.length; j++){
+                    li[j].className = '';
+                }
+                this.className = 'intro';
+                //下面需要显示对应的内容
+                for(var k = 0; k < div.length; k++){
+                    div[k].style.display = 'none';
+                }
+                //单独设置某一个
+                //互殴去了li的key谁能够，而这个属性刚好是div的下标
+                var key = this.getAttribute('key');
+                div[key].style.display = 'block';
+
+            }
+        }
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin-top: 320px;
+            width: 500px;
+            height: 400px;
+            border: 1px solid red
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <img src="../img/1.jpg" alt="">
+    </div>
+    <div>
+        <img src="../img/1.jpg" alt="">
+    </div>
+    <div>
+        <img src="../img/1.jpg" alt="">
+    </div>
+    <div>
+        <img src="../img/1.jpg" alt="">
+    </div>
+    <div>
+        <img src="../img/1.jpg" alt="">
+    </div>
+
+    <script>
+        //优化原因： 图片加载速度较慢，尤其是多张图，希望先加载可视区那一屏的图
+        //其他的当滚动条滚动到相应位置上再加载
+
+
+        var img = document.querySelectorAll('img');
+
+        img[0].src = img[0].getAttribute('_src');
+        //给图片加载设置初始状态值
+        for(var j = 0; j < img.length; j++){
+            img[j].type = true;
+        }
+
+        window.onscroll = function(){
+            for(var i = 0; i < img.length; i++){
+                // console.log('index'+ i);
+                // console.log('distance'+ img[i].offsetTop);
+                // console.log('visual height'+document.documentElement.clientHeight);
+                // console.log('scrollTop'+ document.documentElement.scrollHeight);
+                var viewH = document.documentElement.clientHeight;
+                var scrollTop = document.documentElement.scrollHeight;
+                //判断是否要加载下一张图片
+                if(img[i].offsetTop <= viewH + scrollTop && img[i].type == true){
+                    console.log(50);
+                    //将原有的_src的属性 赋值给src
+                    img[i].src = img[i].getAttribute('_src');
+                    //设置过一次图片地址，这张图就不需要再设置属性
+                    img[i].type = false;
+                }
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

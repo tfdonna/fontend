@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>敏感词过滤</h1>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>确定</button>
+    <h3>过滤后文本</h3>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <script>
+        var str = '3s4 d5 f6gy uiml,./567y ghv/.,';
+        var arr = [];
+
+        var temp = '';
+        for(var i = 0; i < str.length; i++){
+            if(str.charAt(i) >= '0' && str.charAt(i) <= '9'){
+                temp += str.charAt(i);
+            }else{
+                if(temp){
+                    arr.push[temp];  //将数字推到arr中
+                    //temp 清空， 准备接收下一个数字
+                    temp = '';
+                }              
+            }
+        }
+        console.log(arr);
+
+
+        //正则表达式   
+        // + 表示一个以上
+        var re = /\d+/g;
+        console.log(str.match(re));
+
+        //search 查找符合要求的字符串
+        console.log(str.search(/g/));   //查找'g'返回下标
+        console.log(str.search(/a/));    //没找到，返回-1
+
+
+        var userA = window.navigator.userAgent;
+        if(userA.search(/firefox/i) != -1){
+            console.log('火狐');
+        }else if(userA.search(/chrome/i) != -1){
+            console.log('谷歌');
+        }else{
+            console.log('其他');
+        }
+
+        // /g 全局匹配   可以将整个字符串查找一遍
+        var rel = /\d\d/g;
+        console.log(str.match(rel));
+        var rel = /\d/g;
+        console.log(str.match(rel));
+
+        //replace
+        //敏感词过滤
+        var text = document.querySelectorAll('textarea');
+        var btn = document.querySelector('button');
+        btn.onclick = function(){
+            //获取过滤前的文本信息
+            var str = text[0].value;
+            var re = /少年|山河/g;
+            var str1 = str.replace(re, '**');
+            text[1].value = str1;
+        }
+
+        //test  测试，匹配上的返回true，否则返回false
+        var rel = /^abc/;
+        console.log(rel.test('abc'));
+        console.log(rel.test('cabc'));
+        console.log(rel.test('abcsf'));
+
+        //开始与结束都要匹配上
+        var rel1 = /^abc$/;
+        console.log(rel.test('abc'));
+        console.log(rel.test('cabc'));
+        console.log(rel.test('sabcsf'));
+
+        //字符类
+        var str = /[abc]/;
+        var str1 = /^[abc]/;
+        var str2 = /^[abc]$/;
+        console.log(str2.test('andy'));  //true t f
+        console.log(str2.test('simon')); //false f f
+        console.log(str2.test('fengzia')); //true f f
+
+        var letterdown = /^[a-z]$/;  //小写
+        var letterup = /^[A-Z]$/;  //大写
+        var mix = /^[a-zA-Z0-9]$/;  //字母 数字
+        console.log(letterdown.test('d'));
+        console.log(letterup.test('W'));
+
+
+
+    </script>
+</body>
+</html>

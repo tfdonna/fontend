@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var ling = {
+            name: 'simon',
+            age: 30,
+            character:{
+                sex: 'male'
+            },
+            color:['blue', 'red']
+        }
+
+        //浅拷贝   新对象修改属性时，影响了原对象
+        // var gj = ling;
+        // gj.age = 29;
+        // console.log(ling);
+        // console.log(gj);
+
+
+        //深拷贝    新对象在修改属性时，没有影响原对象
+        var zzh = {};
+        for(var i in ling){
+            zzh[i] = ling[i];
+        }
+
+        //复杂的多重对象，只能循环一次，不能完成 所有数据的深拷贝
+        zzh.name = 'fengzi';
+        //zzh.character.sex = 'man';  //影响了  对于复杂对象不可以这样写
+        console.log(zzh);
+        console.log(ling);
+
+        //怎样完成多重数据的深拷贝
+        //1. 序列化和反序列化   （把对象变为字符串，然后再变回来）   parse + stringlfy 的形式
+        var mystr = JSON.stringify(ling);
+        //JSON.parse   将字符串转json对象时，会对json格式进行判断，看字符串是否符合json格式
+        var jz = JSON.parse(mystr);
+        jz.character.sex = '保密';
+        console.log(jz);   //保密
+        console.log(ling);//male
+
+        //2.jquey $.extend  可以完成深拷贝
+
+        //3. 可以使用递归， 完成深拷贝
+        var obj = {};
+        //封装深拷贝的函数
+        function deepCopy(newObj, oldObj){
+            for(var k in oldObj){
+                var item = oldObj[k];
+                //判断值是否是一个数组
+                if(item instanceof Array){
+                    newObj[k] = [],
+                    deepCopy(newObj[k], item);
+                }else if(item instanceof Object){
+                    newObj[k] = {},
+                    deepCopy(newObj[k], item)
+                }else{
+                    newObj[k] = item;
+                }
+                
+            }
+        }
+        deepCopy(obj, ling);
+
+        obj.character.sex = 'couple';
+        console.log('原对象：', ling);
+        console.log('新对象', obj);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //变量作用域   全局  局部
+
+        var num = 10; //全局变量
+
+        function fn(){
+            var age = 30;  //局部变量
+        }
+        //局部作用域变量：函数调用结束时，变量会销毁
+
+        //闭包   即函数嵌套函数
+        function fns(){
+            var num = 10;
+            function fun(){    //闭包
+                num++;
+                console.log(num);
+            }
+            return fun;
+        }
+        var myfun = fn();
+        myfun();//11
+        myfun();//12 
+
+    </script>
+</body>
+</html>

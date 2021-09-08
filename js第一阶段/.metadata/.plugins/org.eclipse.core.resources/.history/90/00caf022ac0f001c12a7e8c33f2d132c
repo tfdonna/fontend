@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+    .box{
+        width: 600px;
+        height: 400px;
+        border: 2px solid purple;
+    }
+</style>
+</head>
+<body>
+       拖拽一张图片过来……
+    <div id="box">
+        <img alt="" src="" id="img">
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+			//获取id
+			var img = document.querySelector('img');
+			var box = document.querySelector('#box');
+			
+			box.ondragover = function (ev) {
+				ev.preventDefault();
+			}
+			
+			box.ondrop = function (ev) {
+				console.log(666);
+				ev.preventDefault();
+				var f1 = ev.dataTransfer.files;
+				var fd = new FileReader;
+				//将图片文件读取为url地址形式
+				fd.readAdDataURL(f1[0]);
+				fd.onload = function () {
+					console.log(this.result);
+					img.src = this.result;
+				}
+			}
+		}
+    </script>
+</body>
+</html>

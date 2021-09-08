@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+
+    <script>
+        var ul = document.querySelector('ul');
+        var li = document.querySelectorAll('li');
+        // 节点
+        console.log(ul.nodeValue); // null
+        console.log(ul.nodeType); // 1节点
+        console.log(ul.nodeName); // ul
+
+        //console.log(ul.child[2].nodeValue);
+
+        console.log(li[0].nodeName);
+        console.log(li[0].nodeType);
+        console.log(li[0].nodeValue);
+        
+
+        // 父节点
+        console.log(li[0].parentNode); //ul
+        console.log(li[0].parentNode.parentNode); // boody
+
+        //chileNodes 所有的子节点 包括元素节点 文本节点 空格 换行 tab
+        console.log(ul.childNodes);
+        //ul下的所有子节点
+        console.log(ul.children);
+
+        console.log(ul.firstChild);  // IE9一撒谎给你，其他浏览器都可以识别  但在ie8及以下的浏览器可以获取到 节点信息
+        console.log(ul.firstElementChild);  //IE8 即以下浏览器不识别
+        
+        //下一个节点
+        var first = firstNode(ul);
+        console.log(first.nextElementSibling);
+        //上一个节点
+        var last = lastNode(ul);
+        console.log(last.previousElementSibling);
+
+        //第一个节点的兼容写法
+        //obj 对象
+        //obj 父节点
+        function firstNode(obj){
+            return obj.firstElementChild || obj.firstChild;
+        }
+        //最后一个节点
+        function lastNode(obj){
+            return obj.lastElementChild || obj.lastChild;
+        }
+        //上一个节点  兄弟
+        function previousNode(obj){
+            return obj.previousElementSibling || obj.previousSibling;
+        }
+        //下一个节点
+        function nextNode(bj){
+            return obj.nextElementSibling || obj.nextSibling;
+        }
+    </script>
+</body>
+</html>

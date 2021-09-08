@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+       //箭头函数
+       //等同于 const fn() = function(){}  
+       //() 是函数   =>箭头  {}函数体
+       const fn = () => {
+           console.log('我是箭头函数');
+       } 
+       fn();
+
+       //两数求和
+       function sum(a, b){
+           return a+b;
+       }
+       var result = sum(5, 6);
+       console.log(result);
+
+       const sum1 = (a, b) => a+b;
+       //相当于 const sum = (a, b) => {return a+b};
+       //箭头函数中，一句话并且有返回值，可以省略大括号和return
+       var result = sum1(5, 6);
+       console.log(result);
+
+
+       //参数只有一个
+       let big = num => num+1;
+       console.log(big(5));
+
+       //箭头函数可以保留this的指向
+       function fnn(){
+           return () =>{
+               console.log(this);  //window 
+           }
+       }
+       let resFn = fnn();
+       resFn()
+
+       const obj = {name:'simon'};
+       let resFnn = fnn.call(obj);//this -> obj
+       resFnn();
+
+
+       //箭头函数面试题：
+       var cat = {
+           lives: 9,
+           jump: () => {    //1. function()  指向lives
+            //箭头函数自己的this指向，指向上下文的this
+               console.log(this);  // 2. => 指向window  
+               this.lives--;
+           }
+       }
+       cat.jump();
+       cat.jump();
+       console.log(cat.lives);  // 1. 7  2. 9
+
+       //箭头函数示例
+       //点击方块，延时2s，背景变为蓝色
+       document.querySelector('.box').onclick = function(){
+           setTimeout(() => {
+               console.log(this);   //指向window   function()方法  
+               //箭头函数   this指向box   保留了上下文的this指向
+               this.style.background = 'blue';  //undefined
+           }, 2000)
+        
+       }
+
+
+       //面试题
+
+
+       var age = 100;
+       var ooject = {
+           age: 20,
+           say: ()=>{
+               //this 指向window
+               console.log(this.age); //100
+           }
+       }
+       obj.say();
+    </script>
+</body>
+</html>

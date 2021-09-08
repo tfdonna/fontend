@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>Baidu Map </title>  
+    <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=mGcT1zY70goezGXavqXA1N51leKzHWVq"></script>
+    <style type="text/css">  
+        html{height:100%}  
+        body{height:100%;margin:0px;padding:0px}  
+        #container{height:100%}  
+    </style>  
+    
+</head>
+
+<body>
+
+    <script>
+    var map = new BMapGL.Map("container");
+    var address = [
+    	{
+    		city:'广州市',
+    		title:'璟泰大厦',
+    		address:'广东省广州市越秀区广州大道中295-299号',
+    		point:[113.321009, 23.131073]
+    	}
+    ]
+    var point = new BMapGL.Point(116.404, 39.915);   
+    map.centerAndZoom(point, 20);
+    map.enableScrollWheelZoom(true);
+    
+    var opts = {
+    	width: 250,     // 信息窗口宽度
+    	height: 100,    // 信息窗口高度
+    	title: "广州泽林"  // 信息窗口标题
+    }
+    var infoWindow = new BMapGL.InfoWindow("广东省广州市越秀区广州大道中295-299号", opts);  // 创建信息窗口对象
+    map.openInfoWindow(infoWindow, point);  
+    </script>
+</body>
+
+</html>

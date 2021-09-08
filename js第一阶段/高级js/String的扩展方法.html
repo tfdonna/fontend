@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1. 普通字符串没办法换行
+        // var str = 'dfgjnm
+        // fghjk
+        // hjkm';
+
+        //2. 普通字符串加变量的话，需要截断字符串在添加
+        var age = 29;
+        console.log('我是simon ， 今年' + age + '岁');
+
+        //一、模板字符串
+        //优势： 解决了问题1、 2、
+        var str1 = `fghjk
+        fgh
+        hjn
+        ftyghuj`;
+        console.log(str1);
+
+        var age = 18;
+        console.log(`我是simon，今年${age}岁`);
+        //示例：跳转到候鸟的案例作业
+
+
+        // startsWith  判断是不是在字符串的最前面
+        //endsWith  判断是不是在字符串的最后面
+        console.log(str1.startsWith('f'));
+        console.log(str1.endsWith('u'));
+        
+        //repeat 
+        console.log('x'.repeat(3));
+    </script>
+</body>
+</html>

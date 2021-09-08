@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+D:\工作\html\html\js第一阶段\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2155895340.index
+2158469277.index
+1836238371.index
+386984337.index
+3773482110.index
+503588662.index
+854143607.index

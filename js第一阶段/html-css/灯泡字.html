@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: thistle;
+            display: flex;
+            justify-self: unset;
+        }
+        .a{
+            position: relative;
+            color: #333;
+            top: 300px;
+            font: 900 100px '';
+            cursor: pointer;
+        }
+
+        .a span{
+            transform: .5s;
+            transition-delay: calc(var(--i)*.1s);
+        }
+        .a:hover span{
+            color: #fff;
+            text-shadow: 0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 30px #fff,
+            0 0 50px #fff,
+            0 0 80px #fff
+        }
+    </style>
+</head>
+<body>
+    <div class="a">
+        <span class="--i:1">这</span>
+        <span class="--i:2">是</span>
+        <span class="--i:3">灯</span>
+        <span class="--i:4">泡</span>
+        <span class="--i:5">字</span>
+    </div>
+    <script>
+        setInterval(function(){
+            var rain = document.createElement('div');
+            rain.style.position = 'fixed';
+            rain.style.height = '150px';
+            rain.style.width = '2px';
+            rain.style.background = '#fff';
+            rain.style.top = '0px';
+            rain.style.left = Math.random()*1920 + 'px';
+            rain.style.opacity = parseInt(Math.random()*30)/30 + '';
+
+            document.body.appendChild(rain);  //向body里添加div标签
+            var timer = setInterval(function(){
+                var height = parseInt(rain.style.top);
+                var k = 1;
+                k++;
+
+                rain.style.top = height + 5*Math.pow(k, 2) + 'px';  //模拟雨的重力加速度
+                if(rain.style.top >= '900'){
+                    clearInterval(timer);
+                    rain.parentNode.removeChild(rain);
+                }
+            }, 8)
+        })
+
+        
+
+    </script>
+</body>
+</html>

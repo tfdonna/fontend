@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sina下拉菜单</title>
+</head>
+<body>
+    <dic class="nav">
+        <ul>
+            <li>微博
+                <ul>
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+            <li>微博
+                <ul>
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+            <li>微博
+                <ul>
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+            <li>微博
+                <ul>
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+
+        </ul>
+    </dic>
+    <script>
+        var nav = document.querySelector('.nav');
+        var li = nav.children;
+
+        for(var i = 0; i < li.length; i++){
+            li[i].onmouseover = function(){
+                this.children[1].style.display = 'block';
+            }
+            li[i].onmouseout = function(){
+                this.children[1].style.display = '';
+            }
+        }
+
+        //最后一个节点
+        function lastNode(obj){
+            return obj.lastNode || obj
+        }
+
+    </script>
+</body>
+</html>

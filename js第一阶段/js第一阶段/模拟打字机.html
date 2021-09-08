@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟打字机</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0px;
+        }
+        #banner{
+            margin:20px auto;
+            width: 600px; 
+            position: relative; 
+            overflow: hidden;
+            height: 300px;
+        }
+        #banner img{
+            width: 600px; 
+        }
+        #banner ul {
+            display: flex; 
+            position: absolute; 
+        }
+        #banner ul,
+        #banner ul li{
+            padding: 0;
+            margin: 0;
+            list-style:none; 
+        }
+        
+        #banner ul{
+            animation: switch 5s linear 1s infinite alternate;
+        }
+        
+        #banner ul:hover{
+            animation-play-state: paused; 
+        }
+        
+        @keyframes switch{ 
+            0%,13%{
+                left: 0;
+            }
+            27%,41%{
+                left: -600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <ul> 
+            <li>
+                <img src="img/1.jpg" />
+            </li>
+            <li>
+                <img src="img/2.jpg" />
+            </li>
+        </ul>
+    </div>
+    <div id="banner">
+        <ul> 
+            <li>
+                <img src="img/3.jpg" />
+            </li>
+            <li>
+                <img src="img/4.jpg" />
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

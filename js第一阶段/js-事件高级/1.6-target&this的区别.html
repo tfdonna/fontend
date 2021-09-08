@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>事件对象</button>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var btn = document.querySelector('button');
+        var ul = document.querySelector('ul');
+        //event 事件对象
+        btn.onclick = function(ev){
+            var ev = ev || window.event;   //ie6-8  可以获取到window.event
+            console.log(ev.target);
+            console.log(this);
+        }
+        ul.addEventListener('click', function(ev){
+            console.log(ev.target);
+            console.log(this);
+        })
+        /*
+        this 指的是给谁绑定的事件，那this就指向谁
+        ev.target  谁触发的事件，ev.target就是谁
+        */
+
+        /*
+        面试题：
+        1. 浏览器有哪些兼容性问题？
+        （1）事件对象 event ie6-8 window.event
+        （2）addListener
+        （3）节点 子节点 父节点 兄弟 第一个子节点 最后一个子节点
+        （4）阻止冒泡
+        （5）阻止默认事件
+        （6）ev.target
+        */
+    </script>
+</body>
+</html>

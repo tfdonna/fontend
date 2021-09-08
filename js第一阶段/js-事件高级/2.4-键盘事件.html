@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //keyup:  按键弹起时触发
+        document.addEventListener('keyup', function(){
+            console.log('我的按键弹起了');
+        });
+
+        //keypress: 按键按下时触发, 对功能键无效
+        document.addEventListener('keypress', function(){
+            console.log('我的按键按下了');
+        })
+        //keydown: 按键按下时触发, 对功能键有效
+        document.addEventListener('keydown', function(){
+            console.log('我的按键按下了，666');
+        })
+
+    </script>
+</body>
+</html>

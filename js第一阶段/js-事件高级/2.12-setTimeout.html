@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(){
+            console.log(666);
+        }
+
+        setTimeout(fn, 5000);  //延时器（定时器） 延迟n毫秒(参数2)执行fn函数(参数1)
+
+        setTimeout(function(){
+            console.log('come out');
+        }, 2000)
+        //延时内容按照 延时 时间执行
+
+        setTimeout('fn()',2000); //可以这样写以字符串的形式，但是不推荐
+    </script>
+</body>
+</html>

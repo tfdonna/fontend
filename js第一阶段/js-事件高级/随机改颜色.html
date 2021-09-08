@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="李婷芳" content="change color">
+    <title>随机改变颜色</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <button class="color">更换颜色</button>
+    <button class="stop">暂停</button>
+    <script>
+        var color = document.querySelector('.color');
+        var stop = document.querySelector('.stop');
+        var oDiv = document.querySelector('#div1');
+
+        /* 
+        //way 1
+        function getRandom(min, max){
+            return parseInt(Math.random()*(max-min)+min);
+        }
+        var timer = setInterval(function(){
+            oDiv.style.background='rgb('+getRandom(0,256)+', '+getRandom(0,256)+', '+getRandom(0,256)+')';
+        },1000)
+        
+        //change color
+        color.onclick = function(){
+            var oDiv=document.getElementById('div1');
+            oDiv.style.background='rgb('+getRandom(0,256)+', '+getRandom(0,256)+', '+getRandom(0,256)+')';
+        }
+        //暂停颜色更换
+        stop.onclick = function(){
+            clearTimeout(timer);
+        }
+        */
+
+
+        //way 2
+        function getRandomColor(){
+            var col = '#';
+            var arr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+            for (var i = 0; i < 6; i++){
+                var color = parseInt(Math.random()*(arr.length-1));
+                col += arr[color];
+            }
+            return col;
+        }
+        var timer = setInterval(function(){
+            oDiv.style.background = getRandomColor();
+        },1000)
+        //change color
+        color.onclick = function(){
+            oDiv.style.background = getRandomColor();
+        }
+        //暂停颜色更换
+        stop.onclick = function(){
+            clearTimeout(timer);
+        }
+
+
+    </script>
+</body>
+</html>

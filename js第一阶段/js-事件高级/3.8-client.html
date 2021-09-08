@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 15px solid sandybrown;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>client</div>
+    <script>
+        var div = document.querySelector('div');
+
+        console.log(div.clientTop); //clientTop  上边框的大小
+        console.log(div.clientLeft); //clientLfet   左边框的大小
+
+        console.log(div.clientWidth);  //220 width + padding*2
+        console.log(div.clientHeight);
+
+        console.log(div.offsetWidth); // 250 width + padding*2 + border*2
+
+        div.onclick = function(ev){
+            //鼠标点击哪个点里x轴 或 y轴的距离
+            console.log(ev.clientX);
+            console.log(ev.clientY);
+        }
+    </script>
+</body>
+</html>

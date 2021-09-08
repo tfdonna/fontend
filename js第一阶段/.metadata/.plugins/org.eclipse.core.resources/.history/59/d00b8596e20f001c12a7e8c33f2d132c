@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+        #big{
+            margin: 0 auto;
+            width: 400px;
+            height: 200px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-content: space-around;
+            
+        }
+        .lit{
+            border: 1px solid #789;
+            width: 80px;
+            height: 80px;
+            
+        }
+        img{width: 100%;}
+
+	</style>
+</head>
+<body>
+    <div id="big">
+        <div class="lit" draggable="true"><img alt="" src="images/ying5.jpg"></div>
+        <div class="lit" draggable="true"><img alt="" src="images/ying1.jpg"></div>
+        <div class="lit" draggable="true"><img alt="" src="images/ying7.jpg"></div>
+        <div class="lit" draggable="true"><img alt="" src="images/ying2.jpg"></div>
+        <div class="lit" draggable="true"><img alt="" src="images/ying6.jpg"></div>
+        <div class="lit" draggable="true"><img alt="" src="images/ying8.jpg"></div>
+        <div class="lit" draggable="true"><img alt="" src="images/ying3.jpg"></div>
+        <div class="lit" draggable="true"><img alt="" src="images/ying4.jpg"></div>
+    </div>
+    
+    <script type="text/javascript">
+  //获取小方块
+    var lit = document.getElementsByClassName("lit");
+    var con = null;
+    for(let i=0; i<lit.length; i++){
+        //拖动时，用con保存lit
+        lit[i].ondragstart = function(){
+            con = this;
+        }
+        lit[i].ondragover = function(){
+            event.preventDefault();
+        }
+
+        //拖动结束时，在当前位置下 进行drop事件
+        var big = document.getElementById("big")
+        lit[i].ondrop = function(){
+            if(con != null && con!=this){
+                var abc = document.createElement("div");
+                big.replaceChild(abc,this);
+                big.replaceChild(this,con);
+                big.replaceChild(con,abc)
+            }
+        }
+
+    }
+
+    </script>
+</body>
+</html>

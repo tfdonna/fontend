@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 400px;
+            height: 400px;
+            background: plum;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        outside
+        <div class="inner">inside</div>
+    </div>
+
+    <script>
+        var box = document.querySelector('.box');
+        var inner = document.querySelector('.inner');
+
+        // box.onmouseover = function(){
+        //     console.log('鼠标移入了');
+        // }
+        // box.onmouseout = function(){
+        //     console.log('鼠标移出了');
+        // }
+
+        //只在绑定过的元素上触发
+        box.onmousenter = function(){
+            console.log('鼠标移入了');
+        }
+        box.onmouseleave = function(){
+            console.log('鼠标移出了');
+        }
+    </script>
+</body>
+</html>

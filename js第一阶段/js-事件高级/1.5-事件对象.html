@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>事件对象</button>
+    <script>
+        var btn = document.querySelector('button');
+        //event 事件对象
+        btn.onclick = function(event){
+            console.log(event);
+        }
+        /*
+        注意：
+        event 或者 ev 是一个形参
+        对dom节点进行发事件绑定时才会有事件对下个
+        事件对象是 系统给的，不需要程序员传递参数
+        事件对象有点兼容性问题 ie6-8 event
+        */
+    </script>
+</body>
+</html>

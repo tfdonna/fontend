@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <button>隐藏</button>
+    <div id="box" class="box">
+        i am div.
+    </div>
+
+    <script>
+        var box = document.getElementById('box');
+        var btn = document.querySelector('button');
+        var type = true;
+
+        var col = '#';
+        var arr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+        function color(){
+            for (var i = 0; i < 6; i++){
+            col += arr[getRandom(0, arr.length-1)];
+            }
+            //return col;
+            box.style.background = col;
+        }
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min+1)+min);
+        }
+
+        btn.onclick = function(){
+            if(type){
+                box.style.display = 'none';
+                btn.innerHTML = '显示';
+            }else{
+                box.style.display = '';
+                //box.style.background = color();
+                color();
+                btn.innerHTML = '隐藏';
+
+            }
+            type = !type;
+        }
+        
+    </script>
+</body>
+</html>

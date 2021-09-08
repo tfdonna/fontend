@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+    <script>
+        //调用
+        //1. 普通函数调用
+        function fn(){
+            console.log('i am rich.');
+        }
+        fn()
+
+        //2. 对象的方法的调用
+        var a = {
+            fn: function(){
+                console.log('对象中的方法');
+            }
+        }
+        a.fn();
+
+        //3. 构造函数
+        function Person(name){
+            this.name = name;
+        }
+        var person = new Person();
+
+        //4. 绑定事件函数
+        var btn = document.querySelector('button');
+        btn.onclick = function(){
+            console.log('点击绑定的事件');
+        }
+        //当点击按钮时，就调用了这个函数
+
+        //5. 定时器的函数
+        var timer = setTimeout(function(){
+            console.log('定时器里的函数');
+        }, 1000);
+
+        //6. 立即执行函数  定义：不需要人为手动调用，可以自动调用
+        //前面的分号表示上面的插件、内容已经结束了
+        ; (function(){
+            console.log('立即执行函数');
+        })();
+        //一般用于插件的封装
+
+
+
+
+    </script>
+    
+</body>
+</html>

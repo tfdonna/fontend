@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>换肤</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0%;
+        }
+        body{
+            background-color: white;
+        }
+        .turn{
+            margin-top: 50px;
+            margin-left: 200px;
+            width: 300px;
+            height: 500px;
+            background-color: #ccc;
+        }
+        
+    </style>
+</head>
+<body>
+    <button>关灯</button>
+    <div class="turn"></div>
+    
+    <script>
+        var btn = document.querySelector('button');
+        var body = document.body;
+        var text = document.querySelector('.turn');
+        var turn = true;
+
+        btn.onclick = function(){
+            if(turn){
+                body.style.background = '#000';
+                text.style.background = '#333';
+                this.innerText = '开灯';
+            }else{
+                body.style.background = '#fff';
+                text.style.background = '#ccc';
+                this.innerText = '关灯';
+            }
+            turn = !turn;
+        }
+    </script>
+</body>
+</html>

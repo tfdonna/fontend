@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+        #box {
+            border: 2px solid green;
+            width: 400px;
+            height: 200px;
+        }
+        .red{width: 20px;height: 20px;border-radius: 50%;background: red;}
+        .blue{width: 20px;height: 20px;border-radius: 50%;background: blue;}
+    </style>
+</head>
+<body>
+    <button>获取彩票信息</button>
+    <div id="box"></div>
+
+    <script>
+        //获取彩票信息
+        window.onload = function () {
+            var oBtn = document.querySelector('button');
+            var oBox = document.querySelector('#box');
+            var redball = document.createElement('span');
+            var blueball = document.createElement('span');
+            redball.className = 'red';
+            blueball.className = 'blue';
+
+            oBtn.onclick = function () {
+                //获取彩票信息
+                var suijiArr = getRandom(6, 1, 33);   //红球6个
+                var blue = getRandom(1, 1, 16);   //蓝球1个
+                var caipiao = suijiArr.concat(blue);   //拼接
+                //console.log(suijiArr);
+                console.log(caipiao);
+                
+                redball.innerHTML = suijiArr.join(' ');
+                blueball.innerHTML = blue.join(' ');
+                
+               
+                //使用 hash将随机数保存到历史记录中
+                window.location.hash = caipiao;
+                oBox.innerHTML = caipiao;
+            }
+            
+            window.onhashchange = function () {
+                //获取 hash值 
+                var arr = window.location.hash.substring(1);
+                console.log(arr);
+                oBox.innerHTML = arr;
+            }
+
+            function getRandom(count, start, end) {
+                var numArr = [];
+                for (var i = 0; i < count; i++) {
+                    var num1 = Math.floor(Math.random() * (end - start) + start);
+                    if(numArr.indexOf(num1) == -1){
+                    	numArr.push(num1);
+                    	num1.className = 'red';
+                    }else{
+                    	i--;
+                    }
+                }
+                return numArr;
+            }
+        }
+    </script>
+</body>
+</html>

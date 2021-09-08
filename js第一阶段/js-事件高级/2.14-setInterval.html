@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器的设置和停止</title>
+</head>
+<body>
+    <button>stop</button>
+    <script>
+        var i = 0;
+        function fn(){
+            i++;
+            console.log('hello'+i);
+        }
+        //setInterval 定时器， 函数(参数1) 每隔n秒(参数2)执行一次
+        var time = setInterval(fn, 1000);
+
+        //停止 定时器
+        var btn = document.querySelector('button');
+        btn.onclick = function(){
+            // stop interval  参数：保存定时器的变量名
+            clearInterval(time);
+        }
+    </script>
+</body>
+</html>

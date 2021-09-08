@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select all </title>
+</head>
+<body>
+    <div>
+        <input type="checkbox" id="checkall"/>全选<br/>
+        <ul>
+            <li><input type="checkbox"/>柑橘</li>
+            <li><input type="checkbox"/>香蕉</li>
+            <li><input type="checkbox"/>百香果</li>
+            <li><input type="checkbox"/>西瓜</li>
+            <li><input type="checkbox"/>鸭梨</li>
+            <li><input type="checkbox"/>苹果</li>
+        </ul>
+    </div>
+    <script>
+        //1. get element
+        var ul = document.querySelector('ul');
+        var checkall = document.getElementById('checkall');
+        var fruit = ul.querySelectorAll('input');
+
+        //function1: 给全选按钮绑定事件
+        checkall.onclick = function(){
+            for(var i = 0; i < fruit.length; i++){
+                fruit[i].checked = this.checked;
+            }
+        }
+        //func2. 如果下面的所有input的框都选中，全选按钮就选中
+        for(var i = 0; i < fruit.length; i++){
+            fruit[i].onclick = function(){
+                //假设全部input都选中
+                var type = true;
+                for(var j = 0; j < fruit.length; j++){
+                    if(!fruit[j].checked){
+                        type = false;
+                        break;
+                    }
+                }
+                //给全选按钮设置状态值
+                checkall.checked = type;
+            }
+        }
+    </script>
+</body>
+</html>

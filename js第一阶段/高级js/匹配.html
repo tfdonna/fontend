@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="mail" name="mail" />
+    <span>目前只支持.net .com .cn .org的邮箱</span>
+    <button>验证</button>
+    <script>
+        //中文匹配
+        var str = 'hi韩国怒视保护民族今日话题jjdl 你是个你vbj';
+        var re = /[\u4e00-\u9fa5]/g;
+        console.log(str.match(re));
+
+        //邮箱验证
+        var input = document.querySelector('input');
+        var btn = document.querySelector('button');
+        btn.onclick = function(){
+            var txt = input.value;
+            var re = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.(com|cn|net|org)$/;
+            if(re.test(txt)){
+                alert('邮箱验证正确');
+            }else{
+                alert('邮箱格式错误');
+            }
+        }
+
+    
+
+    </script>
+</body>
+</html>

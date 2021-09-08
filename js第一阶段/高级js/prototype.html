@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //操作数组
+        //push pop shift unshift 
+        // var arr = [1, 2, 3];
+        // console.log(arr.push(4));
+        // console.log(arr);
+
+        //对数组Array进行跨站方法 名为sum
+        Array.prototype.sum = function () {
+            console.log(this);
+            var result = 0;
+            for(var i = 0; i < this.length; i++){
+                result += this[i];
+            }
+            return result;
+        }
+        var arr = [1, 2, 3, 4];
+        console.log(arr.sum());
+        var b = [100, 345, 28, 45];
+        console.log(b.sum());
+
+        //给Array 扩展一个方法 mysort（冒泡排序）  作业
+        Array.prototype.mySort = function(){
+            var temp = 0;
+            for(var i = 0; i < this.length-1; i++){
+                for(var j = 0; j < this.length-1-i; j++){
+                    if(this[j] > this[j+1]){
+                        temp = this[j];
+                        this[j] = this[j+1];
+                        this[j+1] = temp;
+                    }
+                }
+            }
+            return this;
+        }
+        console.log(b.mySort());
+
+    </script>
+</body>
+</html>

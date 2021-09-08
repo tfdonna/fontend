@@ -1,0 +1,171 @@
+<!--
+1.创建数组
+判断是数组还是数组的四种方法
+2.添加删除数组元素的方法（四种）  push  pop unshift  shift
+3.***sort  排序   reverse 逆序
+4.***indexOf     lastIndexOf    索引方法
+5.数组转字符串
+6.splise()   数组指定元素删除、新增
+concat()   数组合并
+slise()   数组截取
+-->
+
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            //1.字面量
+            var arr = [1,2,3,4,5,6];
+            //2.new Array()
+            var arr1 = new Array(1,2,3,4,5,6);
+            console.log(arr1);
+
+            //第二种方式创建数组并表示：数组也是一个对象，叫数组对象
+            var Obj = {'name':'simon','age':'30'};
+            //typeof 不能区分数组和对象
+            console.log(typeof arr1);
+            console.log(typeof Obj);
+
+            //面试题：判断是数组还是对象
+            //1.instanceof 
+            console.log(arr instanceof Array);//true
+            console.log(Obj instanceof Array);//false
+            //2.isArray
+            console.log(Array.isArray(arr));//true
+            console.log(Array.isArray(Obj));//false
+            //3.constructor
+            console.log(arr.constructor == Array);//true
+            console.log(Obj.constructor == Array);//false
+            //4.toString
+            console.log(Object.prototype.toString.call(arr));//[object Array]
+            console.log(Object.prototype.toString.call(Obj));//[object Object]
+
+
+            /*
+            添加删除数组元素的方法（四种）
+            push:末尾添加一个或多个元素，修改原数组
+            pop：产出数组最后一个元素，把数组长度减1无参数，修改原数组
+            unshift：向数组的开头添加一个或更多元素
+            shift
+            */
+
+            //1、push    从数组后面追加元素
+            var arr = [1,2,3,4,5];
+            var result = arr.push(6);
+            console.log(arr); //追加元素数修改了原数组
+            console.log(result); //返回值是新数组的长度
+
+            //2、pop
+            var arr1 = [1,2,3,4,5];
+            var re = arr1.pop();
+            console.log(arr1);//删除数组末位元素时数修改了原数组
+            console.log(re);//返回值为被删除的元素
+
+            //3、unshift  在数组前面添加元素
+            var arr2 = [1,2,3,4,5];
+            var res = arr2.unshift(6,7,8);
+            console.log(arr2);//追加元素数修改了原数组
+            console.log(res);//返回值是新数组的长度
+
+            //4、shift    删除数组第一位元素
+            var arr3 = [1,2,3,4,5];
+            var resu = arr3.shift();
+            console.log(arr3); //删除数组首位元素时数修改了原数组
+            console.log(resu); //返回值是新数组的长度
+
+
+            /*
+            练习：查找已经及格的同学的成绩
+
+            */
+           //创建数组
+           var array = [45,67,59,60,80,79];
+           //创建新数组
+           var newArr = [];
+           for(var i = 0; i < array.length; i++ ){
+               if(arr[i] >= 60){
+                   newArr.push(array[i]);
+                   //直接使用push更快捷
+                   //newArr[newArr.lenght] = arrary[i];  
+               }
+           }
+
+
+           //reverse   数组的逆序
+           var arr4 = [5,3,6,1,6,8,3];
+           //way 1
+           var newArr = [];
+           for(var i = arr4.length - 1; i >= 0; i--){
+               newArr[newArr.length] = arr4[i];
+           }
+           console.log(newArr);
+           //way 2  use reverse()
+           console.log(arr4.reverse());
+
+
+           //sort   排序    默认sort是按照字符串大的顺序来排序，如果第一个字符相同，就会比较第二个字符，以此类推
+           var arr5 = ['donna','simon','taylor','gal','selena','gadot'];
+           console.log(arr5.sort());
+
+           var arr6 = [100,29,32,90,11,8];
+           console.log(arr6.sort());   //默认按照字符串的排序方法来进行排序
+
+           //sort按照数字大小来排序
+           //sort()是一个函数，里面需要有参数，这个参数叫回调函数即（function(a,b)）
+           arr6.sort(function(a,b){
+               //return a - b; //从小到大排序（升序）
+               return b - a;  //降序
+           })
+           console.log(arr6);
+
+
+           /*
+           搜索数组中的元素是否存在：indexof
+           如果找到该元素，返回该元素的下标，若没找到，返回-1
+           */
+          var color = ['red','yellow','blue','black','orange','white'];
+          var myc = prompt('please input a color');
+          console.log(color.indexOf(myc));
+          //lastindexOf
+          var color = ['red','yellow','blue','black','orange','white','yellow'];
+          console.log(color.lastIndexOf('yellow')); //6
+          console.log(color.indexOf('yellow')); //1
+          //如果数组中有多个该元素，indexOf从头开始找到一个就返回下标
+          //lastindexOf则是从尾开始找，找到就返回下标
+
+
+          //数组转字符串
+          var arr7 = [1,2,3,4,5,6];
+          //toString将数组转字符串，没有参数，默认用’,‘连接
+          console.log(arr.toString());
+          //join可以添加连接符，可以也有参数，无参数时默认用’,‘连接
+          console.log(arr7.join('-'));
+
+
+          //concat 数组合并   触底加载下一页，新数据和救赎需要进行合并
+          var arr8 = [1,2,3];
+          var arr19 = [4,5,6];
+          console.log(arr8.concat(arr19));//也可以多链接几个数组，数组中对数组的重复值没有处理
+
+          //slice()    数组截取
+          console.log(arr7.slice(2,5));  //3,4,5  范围[2,5）]
+          //参数：start  截取数组下标的开始     end  截取数组的下标的结束，不包括该元素
+          
+          //splice()   可删除，添加，修改功能
+          //删除（开始删除的下标，删除的元素数量）
+          var arr9 = arr7.splice(1,2);   
+          console.log(arr9); //返回值为删除的元素2，3
+          console.log(arr7);//返回删除后剩下的数组，修改了原数组1,4,5,6
+          //添加  (开始删除/添加的下标，删除元素的数量，要添加的元素)
+          var add = arr7.splice(1,0,'x','y','z');
+          console.log(add); //返回值为空数组，因为删除元素为0
+          console.log(arr7);  //添加后的数组
+          //修改，原理：删除元素后又新增元素
+          var del = arr7.splice(1,3,'x','y','z');
+          console.log(del); 
+          console.log(arr7);
+        </script>
+    </body>
+</html>

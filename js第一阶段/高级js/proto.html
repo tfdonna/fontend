@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //注意：只有构造函数才有prototype的属性，其他的函数或对象都没有这个属性
+        //任何有一个对象都有_proto_这个属性，_proto_属性指向构造函数的原型对象
+        //因为任何对象都有__proto__属性，那么 我们就可以访问他的父级方法和属性
+        //所以没有__proto__就没有原型链
+        function Animal(name, type){
+            this.name = name;
+            this.type = type;
+            this.swimming = function(){
+                console.log(this.name + '在冲浪！');
+            }
+        }
+        Animal.prototype.eating = function (food){
+            console.log(this.name + '在吃' + food);
+        }
+
+        //实例化
+        var smy = new Animal('西蒙', '萨摩耶')
+        smy.swimming();
+        smy.eating('骨头');
+        console.log(smy);
+        console.log(smy.__proto__);
+        console.log(Animal.prototype);
+        console.log(smy.__proto__ === Animal.prototype);
+
+    </script>
+</body>
+</html>

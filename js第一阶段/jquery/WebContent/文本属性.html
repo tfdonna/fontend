@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文本属性</title>
+</head>
+<body>
+    <div class="web">学习前端 开心赚钱</div>
+    <p><span>山河不足重，重在遇知己</span></p>
+    <input type="text" class="user" />
+    
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+       //text()    ===   innerText()
+       //html()    ===   innerHTML()
+       //val()     ===   value()
+       console.log($('div').text());
+       console.log($('p').html());
+       $('.user').blur(function () {
+		console.log($(this).val());
+	})
+    </script>
+</body>
+</html>

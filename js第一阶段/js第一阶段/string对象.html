@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = 'helllo';
+        console.log(str.length);
+        //字符出啊是一个加单数据类型，为什么有长度的属性
+        //js子在运行时，将简单数据类型包装成了复杂数据类型
+        var temp = new String('hello');
+        var sre = temp;
+        temp = null;
+
+        //不要大量拼接字符串！！会有效率问题，很影响性能
+
+
+        var str1 = 'abc';
+        console.log(str1);
+        str1 = '123';
+        console.log(str1);
+        //存了字符串的内存空间的值时不变的，在欸字符串的变量赋新值时，在内存申请了一个新的空间
+
+
+        //字符串的查找位置
+        var cen = '每天都想躺平！天啊';
+        console.log(cen.indexOf('天'));
+        console.log(cen.lastIndexOf('天'));
+
+        //查找所有指定元素的位置   
+        //way 1: indexOf
+        //从0下标开始找
+        var bell = 'i knew you were trouble';
+        var key = bell.indexOf('u');
+        //创建一个变量保存找到了多少个指定元素
+        var num = 1;
+        console.log(key);
+        while(true){
+            key = bell.indexOf('u',key + 1);
+            if(key != -1){
+                num++;
+            }else{
+                break;
+            }
+        }
+        console.log('totally find '+num+' u');
+
+        //way 2: chartAt homework
+
+
+        //charAt  参数是字符串的下标
+        var sent = "永远跟随党的脚步";
+        console.log(sent.charAt(5));//标准
+        var arr = ['a','b','c','d'];
+        console.log(arr[3]);
+
+        console.log(sent.charCodeAt(3));
+        var letter = 'abcdefg';
+        console.log(letter.charCodeAt(3));
+
+        //字符串函数
+        //字符串链接 concat
+        var party = "中国共产党胜利了！";
+        console.log(party.concat('普天同庆'));
+
+        //substr  字符串截取 参1：截取字符串的位置(下标)   参2：截取个数
+        console.log(party.substr(2,3));
+
+        //slice  参1：截取字符串的位置(下标)    参2：截取字符串的结束位置[2,4)
+        console.log(party.slice(4,8));
+        console.log(party.slice(4,-1));//从参1开始截取字符串，-1表示字符串最后一个元素，（4，-1）即（4，8）；
+        //参数为负表示从尾部算起
+
+        //substring  只能用于字符串  参数表示都一样
+        console.log(party.substring(2,4));//结果和slice的一样
+        //可以写一个参数，即省略第二个参数，则会截取到字符串结束
+
+        /*
+        slice可用于数组或字符串
+        substr和substring只能用于字符串
+        */
+
+
+        //字符串替换
+        //replace   只能替换一个复合的字符
+        var str = 'noonelikesamanwoman';
+        console.log(str.replace('g','*'));
+        //一般用于敏感字符代替，如f**k，过滤敏感字符
+        var song = 'if you love me right, we fuck for life, on and on and on,we fuck for life,we fuck for life';
+        var signal = 'fuck';  //可设置为数组
+        console.log(song.replace(signal,"****"));
+        while(song.indexOf(signal) !== -1){
+            song = song.replace(signal,"**");
+        }
+        console.log(song);
+
+
+        //分割字符串  split
+        var str2 = 'GAL-GADOT';
+        var str1 = 'wonder woman';
+        console.log(str2.split('-'));
+        console.log(str1.split(' '));  //若是空字符串，会将字符串按每个字符来分割
+
+        //转大写
+        console.log(str1.toUpperCase());
+        //转小写
+        console.log(str2.toLowerCase());
+
+        //homework:border-right-color  将'-'转为小驼峰   borderRightColor
+        /*
+        1.split 将字符串转为数组
+        2.substr  循环取数组中字符串的第一位
+        3.toUpperCase   将第一位转大写
+        4.substring(1)   连接
+        5.join(' ')  将数组转字符串
+        */
+
+        
+
+
+
+        
+
+       
+
+    </script>
+</body>
+</html>

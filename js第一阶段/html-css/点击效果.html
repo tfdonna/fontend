@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #Img{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+
+        }
+        #Img img{
+            width: 100%;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        #Img img:nth-last-of-type(2){
+            transition-delay: 0.1s;
+        }
+        #Img img:nth-last-of-type(3){
+            transition-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let div = document.createElement('div');
+        dvi.id = 'Img';
+        for(let i = 0; i < 3; i++){
+            let img = document.createElement('img');
+            img.src = 'loading.gif';
+            div.appendChild(img);
+        }
+        document.body.appendChild(div);
+        let divImg = document.querySelector('#Img');
+        document.addEventListener('mousedown', function(ev){
+            let x = ev.pageX;
+            let t = ev.pageY;
+            divImg.style.cssText = 'left:'+ x + 'px; top:'+ t + 'px';
+            let imgs = divImg.children;
+            for (let i = 0; i < imgs.length; i++) {
+                imgs[i].style.opacity = '1';
+                setTimeout(function(){
+                    imgs[i].style.opacity = '0';
+                }, 1000)
+            }
+
+        })
+
+    </script>
+</body>
+</html>

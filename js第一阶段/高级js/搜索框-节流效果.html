@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入搜索内容" />
+    <script>
+        var input = document.querySelector('input');
+
+        //给input绑定按键弹起事件
+        // input.onkeyup = function(){
+        //     console.log(this.value);
+        //     console.log('调用后台数据');
+        // }
+        /*搜索框的keyup时间导致 只要有字母输入就会触发，性能差， 可以使用节流来优化*/
+
+        input.onkeyup = throttle(getdata, 500);
+        function getdata(){
+            console.log(input.value);
+            console.log('调用后台数据');
+        }
+
+        
+        //节流
+        //参数： 1 回调函数   2 延时时间
+        function throttle(fn, delay){
+            var valid = true;  //记录状态 激活 or 失效
+            return function(){
+                if(!valid){ //resting
+                    return false;
+                }
+                valid = false;
+                setTimeout(function(){
+                    fn(); //调用函数
+                    valid = true; //激活状态
+                }, delay) 
+            }
+        }
+
+        //防抖和节流的区别：
+        /*
+        防抖：高频触发事件，ns内只执行一次，如果ns内事件再次被触发，则重新计算时间
+              在一定时间内持续触发该事件，有可能事件绑定的函数一次都触发不到
+              如：滚动条事件
+        节流：高频事件，在ns内只执行一次， 截留可以稀释执行频率，肯定会执行一次以上
+
+        区别：防抖将多次执行变为最后一次执行；  节流将多次执行变为每隔一段时间执行一次
+        */
+    </script>
+</body>
+</html>

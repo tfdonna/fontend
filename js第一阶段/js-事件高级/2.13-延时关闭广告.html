@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../img/狗子1.jpg" alt="ad" width="20%"/>
+    <button>not-close</button>
+
+    <script>
+        //定时器需要保存在变量里， 后面才能关闭
+         var time = setTimeout(function(){
+            document.querySelector('img').style.display = 'none';
+        }, 5000)
+
+
+        //关闭定时器  只有一个参数：定时器的变量
+        var btn = document.querySelector('button');
+        btn.onclick = function(){
+            clearTimeout(time);
+        }
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = '5678 ;fg24n_m,uhjb n 34r_fc';
+        var re = /\d+/g;   //匹配所有的数字，个数是1个以上
+        console.log(str.match(re));
+
+        var re1 = /\D+/g;   //匹配出了数字之外的其他字符，个数是1个以上
+        console.log(str.match(re1));
+
+        var re2 = /[0-9]+/g;   //匹配所有的数字，个数是1个以上
+        console.log(str.match(re2));
+
+        //[^ ]  卸写在方括号最开始的位置^表示取反
+        var re3 = /^[0-9]+/g;   //匹配出了数字之外的其他字符，个数是1个以上
+        console.log(str.match(re3));
+
+        //  \w  匹配数字字母下划线
+        var re4 = /\w+/g;
+        //  \W \w的取反
+        var re5 = /\W+/g;
+        console.log(str.match(re4));
+        console.log(str.match(re5));
+
+        // \s \S
+        var re6 = /\S+/g;
+        console.log(str.match(re6));
+
+    </script>
+</body>
+</html>

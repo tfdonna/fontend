@@ -1,0 +1,97 @@
+<!--js的对象：自定义对象，内置对象，浏览器对象-->
+<!--js的内置对象：Math、Date、Array、String等，类似库-->
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            //Math函数中的对象与python中的相似
+            console.log(Math.PI);
+            //floor 向下取整
+            console.log(Math.floor(3.16));
+            console.log(Math.floor(3.96));
+
+
+            //ceil 向上取整 
+            console.log(Math.ceil(3.16));
+            console.log(Math.ceil(3.96));
+
+            //round 四舍五入取整
+            console.log(Math.round(3.166849));
+            console.log(Math.round(3.96));
+
+            //abs 绝对值
+            console.log(Math.abs(3.16));
+            console.log(Math.abs(-3.96));
+
+            //max
+            console.log(Math.max(1,11,29,5));
+            //min
+            console.log(Math.min(1,11,29,5));
+
+            var money = 1000.51129;
+            //toFixed可以保留小数
+            console.log(money.toFixed(2));  //结果为字符串类型字符串  1000.51
+            console.log(Math.round(money*100)/100);
+
+            //random 随机数
+            console.log(Math.random());
+            //获取随机数
+            //blue ball 1~100
+            console.log(Math.random(Math.random()+1));
+
+
+            for(var i = 0; i < 5; i++){
+                console.log((Math.random()*(10-1)+1))
+            }
+            //1-10取整
+            console.log(Math.floor(Math.random()*10+1));
+
+            //封装函数
+            //参数max 随机数的max、min、random的最小值
+            function getRandom(min,max){
+                return Math.floor(Math.random()*(max-min+1)+min);
+            }
+            //3-8
+            for(var i = 0; i < 5; i++){
+                console.log(getRandom(3,8))
+            }
+
+            //随机点名
+            var stu = ['donna','simon','taylor','taylor','selena','gal','crazy'];
+            console.log(stu[getRandom(0,stu.length-1)]);
+
+            //homework:随机选4个学员但不能重复
+            var stu = ['donna','simon','taylor','taylor','selena','gal','crazy'];
+            for(var i = 0; i < 4; i++){
+                console.log(stu[getRandom(0,stu.length-1)]);
+            }
+            for(var j=0;j<stu.length-1;j++){
+                for(var i = 0; i < 4; i++){
+                    if(j!=i){
+                        console.log(stu[j]);
+                    }
+                }
+            }
+            //guess num
+            //1.生成一个随机数1-20 随机数
+            var num = getRandom(1,10);
+            while(true){
+                //input a num
+                var mynum = prompt('please input a num you guess:');
+                if(mynum > num){
+                    alert('your num is too big, it is illegal!');
+                }
+                else if(mynum < num){
+                    alert('your num is too small, it is illegal!');
+                }
+                else{
+                    alert('you are right!');
+                    break;
+                }
+            }
+
+        </script>
+    </body>
+</html>s

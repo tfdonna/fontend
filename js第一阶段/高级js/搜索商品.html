@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            position: relative;
+            text-align: center;
+        }
+        input{
+            width: 50px;
+        }
+        .list{
+            margin-top: 10px;
+        }
+        .list table{
+            position: absolute;
+            text-align: center;
+            border-collapse: collapse;
+            left: 20%;
+            border: 1px solid black;
+        }
+        table tr th, table tr td{
+            border: 1px solid black;
+            width: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="head">
+        按照价格查询：<input type="text" class="min" /> - <input type="text" class="max"/>
+        <button class="search">搜索</button>
+        按照商品名称查询：<input type="text" class="goods" />
+        <button class="query">查询</button>
+        <div class="list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>产品名称</th>
+                        <th>价格</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+    <script>
+        var min = document.querySelector('.min');
+        var max = document.querySelector('.max');
+        var search = document.querySelector('.search');
+        var goods = document.querySelector('.goods');
+        var query = document.querySelector('.query');
+        var tbody = document.querySelector('tbody');
+
+        var data = [
+            {id:'1', name:'小米', price:'699'},
+            {id:'2', name:'oppo', price:'1299'},
+            {id:'3', name:'荣耀', price:'1299'},
+            {id:'4', name:'华为', price:'2899'}
+        ]
+
+        //渲染页面
+        function add(data){
+            //初始化table中的字符串
+            tbody.innerHTML = '';
+            //使用 forEach 添加数据
+            data.forEach(function(value) {
+                var content = '<td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.price + '</td>';
+                var tr = document.createElement('tr');
+                tr.innerHTML = content;
+                tbody.appendChild(tr);
+            })
+        }
+        add(data);
+
+        //给按钮绑定事件
+        search.onclick = function(){
+            var start = min.value;
+            var end = max.value;
+            var ndata = data.filter(function(value){
+                
+                return value.price >= start && value.price <= end;
+            });
+            console.log(ndata);
+            add(ndata);
+        }
+
+        //按商品名搜索
+        query.onclick = function(){
+            var arr = [];
+            data.some(function(value){
+                console.log(value);
+                if(value.name == goods.value){
+                    arr.push(value);
+                    return true;
+                }else if(goods.value == ''){
+                    return value;
+                }
+            }) 
+            console.log(arr);
+            add(arr);
+            //some 找到某条记录后，是否结束循环是由return true来决定的， 如果没有return，会将所有数组内容循环一遍
+
+        }
+        //要是只查找一条记录就停止的功能，适合使用some， 性能会高一些
+        /*
+        说明：
+        filter   必须循环玩所有的组数元素
+        some   如果有return true ， 找到记录就停止
+        */
+    </script>
+</body>
+</html>

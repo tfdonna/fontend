@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height:2000px">
+    <script>
+        document.addEventListener('click', function(ev){
+            //1. 获取浏览器的X、Y轴坐标
+            console.log(ev.client);
+            console.log(ev.clientY);
+
+            //2. 获取的文档的X、Y轴坐标
+            console.log(ev.pageX);
+            console.log(ev.pageY);
+
+            //3. 获取电脑屏幕的X、Y轴坐标
+            console.log(ev.screenX);
+            console.log(ev.screenY);
+        })
+    </script>
+</body>
+</html>

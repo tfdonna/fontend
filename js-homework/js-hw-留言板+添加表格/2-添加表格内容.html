@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test{
+            border-collapse: collapse;
+        }
+        .test th, td{
+            width: 200px;
+            height: 20px;
+            border: 1px solid #ddd;
+        }
+        .test th{
+            background-color: gray;
+            color: white;
+        }
+        .test tr:nth-child(even){background-color: #f2f2f2;}
+
+    </style>
+
+</head>
+<body>
+    <div>
+        请输入课程：<input type="text" id="course"/> <br/>
+        请输入课时：<input type="text" id="times"/> <br/>
+        <button>添加</button>
+        <table class="test">
+            <tr>
+                <th>课程</th>
+                <th>课时</th>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        var btn = document.querySelector('button');
+        var course = document.getElementById('course');
+        var times = document.getElementById('times');
+        var table = document.querySelector('table');
+
+        btn.onclick = function(){
+            if(course.value == '' && times.value == ''){
+                return false;
+            }else{
+                var form = '<td>' +  course.value + '</td><td>' + times.value + '</td>';
+                var add = document.createElement('tr');
+                add.innerHTML = form;
+                //add.className = '.item';
+                table.appendChild(add);
+                course.value = '';
+                times.value = '';
+            }
+        }
+    </script>
+</body>
+</html>

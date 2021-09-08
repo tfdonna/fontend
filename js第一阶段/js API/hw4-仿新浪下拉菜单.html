@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav {
+            width: 74px;
+            height: 41px;
+            
+        }
+
+        .nav .title {
+            width: 74px;
+            height: 41px;
+            line-height: 41px;
+            text-align: center;
+            color: #4c4c4c;
+            background-color: #edeef0;
+
+        }
+        span{
+            color: #ff8400;
+        }
+
+        .active {
+            background: #eee;
+            color: #ff8400;
+        }
+
+        .nav .menulist {
+            box-shadow: 3px 3px 3px #ccc;
+            display: none;
+        }
+
+        .nav .menulist div {
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #ff8400;
+            border-left: 1px solid #ff8400;
+            border-right: 1px solid #ff8400;
+            padding-left: 15px;
+
+        }
+
+        .nav .menulist div:hover {
+            color: #ff8400;
+            background: lightgoldenrodyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="title">
+            微博<span>^</span>
+        </div>
+        <div class="menulist">
+            <div>私信</div>
+            <div>评论</div>
+            <div>@我</div>
+        </div>
+    </div>
+    <script>
+        //如果 想要能够鼠标上下拉菜单，需要给title的父级节点做鼠标移入移出事件
+        //onmouseover  onmouseout 作用于dom节点是可以冒泡的
+
+        var oNav = document.querySelector(".nav");
+        var oTitle = document.querySelector(".title");
+        var oMenulist = document.querySelector(".menulist");
+        
+        oNav.onmouseover = function () {
+            console.log('64');
+            oMenulist.style.display = "block";
+            oTitle.className = "title active";
+        }
+        oNav.onmouseout = function () {
+            oMenulist.style.display = "none";
+            oTitle.className = "title";
+        }
+
+    </script>
+</body>
+</html>

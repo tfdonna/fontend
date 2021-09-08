@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <input type="checkbox" class="checkall" />全选
+    <div class="cart">
+        <input type="checkbox" />香蕉<br/>
+        <input type="checkbox" />苹果<br/>
+        <input type="checkbox" />荔枝<br/>
+        <input type="checkbox" />葡萄<br/>
+    </div>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+			$('checkall').change(function () {
+				console.log($(this).prop('checked'));
+				$('.cart input').prop('checked'. $(this).prop('checked'));
+			})
+			//给下面的所有小按钮绑定的change事件
+			$('.cart input').change(function () {
+				//input:checked   表示所有选中的input框
+				if($('.cart input:checked').length === $('.cart input').length){
+					$('.checkall').prop('checked', true);
+				}else{
+					$('.checkall').prop('checked', false);
+				}
+			})
+		})
+    </script>
+</body>
+</html>

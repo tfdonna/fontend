@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <img src="../img/扇子.png" alt="扇子" width="5%"/>
+    <script>
+        //1. 获取事件源、dom
+        var img = document.querySelector('img');
+        //2. 给谁绑定事件
+        document.addEventListener('mousemove', function(ev){
+            var x = ev.pageX;
+            var y = ev.pageY;
+            img.style.top = (y-10) + 'px';
+            img.style.left = (x-12) + 'px';
+        })
+    </script>
+</body>
+</html>

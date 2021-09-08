@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>文本</h1>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>去除标签后的文本</button>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <script>
+        var text = document.querySelectorAll('textarea');
+        var btn = document.querySelector('button');
+
+        btn.onclick = function(){
+            var atext = text[0].value;
+            var re = /<[^<>]+>|&nbsp;|\s/g;
+            var str1 = atext.replace(re, '');
+            text[1].value = str1;
+        }
+    </script>
+</body>
+</html>

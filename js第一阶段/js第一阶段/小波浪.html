@@ -1,0 +1,46 @@
+<!--not -->
+<html>
+    <head>
+        <style>
+            body{
+                position: relative;
+                background-color: skyblue;
+                overflow: hidden;
+                min-height: 100vh;
+            }
+            body::before,
+            body::after{
+                content: '';
+                background-color: #fff;
+                position: absolute;
+                min-width: 300vw;
+                min-height: 300vh;
+                animation: i linear infinite;
+
+            }
+            body::before{
+                bottom: 30vh;
+                border-radius: 45%;
+                animation-duration: 10s;
+            }
+            body::after{
+                bottom: 33vh;
+                border-radius: 47%;
+                opacity: 0.5;
+                animation-duration: 10s;
+            }
+            @keyframes i{
+                0%{
+                    transform: translate(-50%,0) rotate(0deg);
+                }
+                50%{
+                    transform: translate(-50%, 2%) rotate(180deg);
+                }
+                100%{
+                    transform: translate(-50%, 2%) rotate(180deg);
+                }
+            }
+        </style>
+    </head>
+
+</html>

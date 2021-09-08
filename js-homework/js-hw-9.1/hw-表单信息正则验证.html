@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #eff8ff;
+            background-image: url('../img/163.png');
+            background-size:cover;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+        .regist{
+            display: flex;
+            position: absolute;
+            width: 470px;
+            top: 86px;
+            padding: 40px 30px 0;
+            left: 35%;
+            border-radius: 5px;
+            
+            box-sizing: border-box;
+        }
+        .regist form h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .regist input{
+            padding-right: 131px;
+            width: 100%;
+            height: 25px;
+            outline: none;
+            border: 1px solid #cbcbcb;
+            border-radius: 3px;
+            padding: 11px 0 10px 16px;
+            font-size: 16px;
+        }
+        .instruction{
+            font-size: 13px;
+            color: slategrey;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+        .item, .mail{
+            display: inline-block;
+        }
+        .mail{
+            margin-left: 20px;
+            font-size: 25px;
+            color: slategrey;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="regist">
+        <form action="#" onclick="">
+            
+            <h2>欢迎注册XX邮箱</h2>
+            <div class="item"><input type="text" placeholder="邮箱地址" /></div><div class="mail">@163.com</div>
+            <div class="instruction">输入注册邮箱号</div>
+            <input type="text" placeholder="用户名" />
+            <div class="instruction">6-16 位数字字母下划线 </div>
+            <input type="text" placeholder="密码" />
+            <div class="instruction">6-16 的字母</div>
+            <input type="text" placeholder="手机号" />
+            <div class="instruction">11位有效电话号码</div>
+            <input type="text" placeholder="验证码" />
+            <div class="instruction">4位有效验证码</div>
+        </form>
+    </div>
+
+    <script>
+        var input = document.querySelectorAll('input');
+        var instruction = document.querySelectorAll('.instruction');
+
+        var re1 = /^[a-zA-Z0-9_-]/;
+        input[0].onblur = function(){
+            if(re1.test(this.value)){
+                console.log('right');
+                input[0].style.border = '1px solid green';
+                instruction[0].style.color = 'green';
+                instruction[0].innerHTML = '邮箱地址可用'
+            }else if(this.value == ''){
+                input[0].style.border = '';
+                instruction[0].style.color = 'slategrey';
+                instruction[0].innerHTML = '输入注册邮箱号'
+            }
+            else{
+                console.log('wrong');
+                input[0].style.border = '1px solid red';
+                instruction[0].style.color = 'red';
+                instruction[0].innerHTML = '邮箱地址错误，请重新输入'
+            }
+        }
+
+        var re2 = /^[0-9a-zA-Z_]{6,16}$/g;
+        input[1].onblur = function(){
+            if(re2.test(this.value)){
+                console.log('right');
+                input[1].style.border = '1px solid green';
+                instruction[1].style.color = 'green';
+                instruction[1].innerHTML = '用户名可用'
+            }else if(this.value == ''){
+                input[1].style.border = '';
+                instruction[1].style.color = 'slategrey';
+                instruction[1].innerHTML = '6-16 位数字字母下划线'
+            }
+            else{
+                console.log('wrong');
+                input[1].style.border = '1px solid red';
+                instruction[1].style.color = 'red';
+                instruction[1].innerHTML = '用户名错误，请重新输入'
+            }
+        }
+
+        var re3 = /^[a-zA-Z_]{6,16}$/g;
+        input[2].onblur = function(){
+            if(re3.test(this.value)){
+                console.log('right');
+                input[2].style.border = '1px solid green';
+                instruction[2].style.color = 'green';
+                instruction[2].innerHTML = '密码设置正确'
+            }else if(this.value == ''){
+                input[2].style.border = '';
+                instruction[2].style.color = 'slategrey';
+                instruction[2].innerHTML = '6-16 位字母'
+            }
+            else{
+                console.log('wrong');
+                input[2].style.border = '1px solid red';
+                instruction[2].style.color = 'red';
+                instruction[2].innerHTML = '密码设置错误，请重新输入'
+            }
+        }
+
+        var re4 = /^([1]\d{10}|([\(（]?0[0-9]{2,3}[）\)]?[-]?)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?)$/g;
+        input[3].onblur = function(){
+            if(re4.test(this.value)){
+                console.log('right');
+                input[3].style.border = '1px solid green';
+                instruction[3].style.color = 'green';
+                instruction[3].innerHTML = '手机号正确'
+            }else if(this.value == ''){
+                input[3].style.border = '';
+                instruction[3].style.color = 'slategrey';
+                instruction[3].innerHTML = '11位有效电话号码'
+            }
+            else{
+                console.log('wrong');
+                input[3].style.border = '1px solid red';
+                instruction[3].style.color = 'red';
+                instruction[3].innerHTML = '手机号输入错误，请重新输入'
+            }
+        }
+        var re5 = /^[0-9a-zA-Z_]{4}$/g;
+        input[4].onblur = function(){
+            if(re5.test(this.value)){
+                console.log('right');
+                input[4].style.border = '1px solid green';
+                instruction[4].style.color = 'green';
+                instruction[4].innerHTML = '验证码输入正确'
+            }else if(this.value == ''){
+                input[4].style.border = '';
+                instruction[4].style.color = 'slategrey';
+                instruction[4].innerHTML = '4位验证码 字母 数字'
+            }
+            else{
+                console.log('wrong');
+                input[4].style.border = '1px solid red';
+                instruction[4].style.color = 'red';
+                instruction[4].innerHTML = '验证码输入错误，请重新输入'
+            }
+        }
+
+
+    </script>
+</body>
+</html>

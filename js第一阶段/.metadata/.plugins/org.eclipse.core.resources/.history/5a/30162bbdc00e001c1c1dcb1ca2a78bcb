@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	   .father{
+	       width: 400px;
+	       height: 400px;
+	       background: lightgreen;
+	       position: absolute;
+	       margin: 10px;
+	       left: 100px;
+	       top: 100px;
+	   }
+	   .son{
+	       width: 100px;
+           height: 100px;
+           background: skyblue;
+           position: absolute;
+           top: 50px;
+           left: 50px;
+	   }
+	</style>
+</head>
+<body>
+   <div class="father">
+	   <div class="son">子节点</div>
+   </div>
+   
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript">
+       //offset  获取偏移量
+       console.log('.son').offset()
+       
+   </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>元素操作</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    
+    <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    </ul>
+    
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+        	// 求div里的数据的和
+            var sum = 0;
+        	
+        	//index 下标    dom： js的dom元素,要转成jq
+			$('div').each(function (index, dom) {
+				$(dom).css('background', 'pink');
+				console.log($(dom).text());
+				sum += +$(dom).text(); //需要将字符型转数值型
+				
+			})
+			console.log(sum);
+			$.each($('div'), function (index, dom) {
+                $(dom).css('background', 'pink');
+                console.log($(dom).text());
+                sum += +$(dom).text(); //需要将字符型转数值型
+                
+            })
+            console.log(sum);
+			
+			//$each 一般用于处理数组或对象
+			$.each({name: 'simon', sex:'male'}, function (i ,ele) {
+				console.log(i, ele);
+			})
+			
+			//隔行变色
+			
+			//添加
+			//默认值
+			function fn(num) {
+				for(var i in provice[num].citys){
+	                //create an 'option'
+	                var $option = $('<option>${provice[num].citys}</option>');
+	                // add 'option' to select
+	                $('#city').append($option);
+	                
+	            }
+			}
+			//调用
+			fn(0);
+			
+			//给省绑定change事件
+			$('#pro').change(function () {
+				//追加前先清空之前的数据
+				$('#city').html('');
+				//获取省的 option 的value数据
+				var num = $(this).val();
+				console.log(num);
+				//调用fn() 重新添加市的数据
+				fn(num);
+			})
+			
+		})
+    </script>
+</body>
+</html>

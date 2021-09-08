@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>click</div>
+
+    <!--document是bom的一部分-->
+    <!--代码都是从上到下运行的顺序，顺序有误会影响代码执行情况-->
+
+    <script>
+        //window bom对象，包含dom
+
+        //当js在dom匀速的前面是，js有可能会报错
+        //如果报错了，需要将这部分js写在window.onload 中
+        // window.onload 表示 当页面全部加载完后再执行里面的函数内容
+        var div = document.querySelector('div');
+        div.addEventListener('click', function(){
+            alert('i am click.')
+        })
+
+        // window.addEventListener('load', function(){
+        //     var div = document.querySelector('div');
+        //     div.addEventListener('click', function(){
+        //         alert('i am click.')
+        // })
+        // })
+
+
+        //页面加载运行更快的 js
+        window.addEventListener('DOMContentLoaded', function(){
+            var div = document.querySelector('div');
+            div.addEventListener('click', function(){
+                alert('i am click.')
+        })
+        })
+        /*
+        DOMContentLoaded & load 的区别：
+        1. load 是所有 dom、css、flash、音视频、canvas等都加载完后再运行里面的js内容
+        2. DOMContentLoaded 指挥加载dom 就会运行js   运行速度更快
+        */
+    </script>
+
+    <div>click</div>
+</body>
+</html>

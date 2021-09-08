@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <style type="text/css">
+        div {
+	       width: 100px;
+	       height: 100px;
+	       background: blue;
+	       position: absolute;
+	       left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button>hide/动画</button>
+    <button>show/stop</button>
+    <button>toggle</button>
+    <div></div>
+    
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+        	//隐藏
+			$('button').eq(0).click(function () {
+				//$('div').hide();
+				//$('div').slide(); //fadeOut(1000)
+				
+				//动画 1、想要动画的属性  2、持续的事件    3、动画形式（匀速）  4.回调函数，动画结束
+				$('div').animate({'width':'200px', 'height':'300px'}, 2000, 'linear', function () {
+					console.log(666);
+				})
+			})
+			//显示
+			$('button').eq(1).click(function () {
+                //$('div').show();
+				//$('div').slideUp();  //fadeIn()
+				
+				//停止动画
+				$('div').stop();
+            })
+            //切换
+            $('button').eq(2).click(function () {
+                //$('div').toggle();
+            	$('div').slideToggle();  //fadeTo(1000, 0.5);  速度 透明度
+            })
+		})
+    </script>
+</body>
+</html>

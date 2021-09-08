@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list">
+        <li>1k</li>
+        <li>2k</li>
+        <li>3k</li>
+        <li>4k</li>
+    </ul>
+    <ul class="list">
+        <li>天河</li>
+        <li>越秀</li>
+        <li>海珠</li>
+        <li>番禺</li>
+    </ul>
+    <ul class="list">
+        <li>单间</li>
+        <li>一房一厅</li>
+        <li>两房一厅</li>
+        <li>三房一厅</li>
+    </ul>
+    <h2>选出来的搜索条件</h2>
+    <ul class="search"></ul>
+    <script>
+        //1.获取dom
+        var ul = document.querySelectorAll('.list');
+        var search = document.querySelector('.search');
+
+        
+        对ul进行循环
+        for(var i = 0; i < ul.length; i++){
+            //将选出来的li添加到 search 中
+            addSearch(ul[i]);
+        }
+
+        function addSearch(obj){
+            console.log(obj);
+            //找到ul下的所有li
+            var li = obj.querySelectorAll('li');
+            var oNewLi = null;   //如果点击了某个li，需要把他放进去
+            //创建的被点击的新li
+
+            for(var j = 0; j < li.length; j++){
+                li[j].onclick = function(){
+                    console.log(51);
+                    //判断有没有这个li
+                    if(!oNewLi){
+                        //cloneNode
+                        oNewLi = this.cloneNode(true);
+                        //将这个节点添加到 search这个ul中
+                        search.appendChild(oNewLi);
+                    }else{
+                        //已经有该类型的节点是，需要更新里面的数据
+                        oNewLi.innerHTML = this.innerHTML;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

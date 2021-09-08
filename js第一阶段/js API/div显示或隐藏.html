@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: springgreen;
+        }
+        img{
+            width: 50%;
+
+        }
+        .ad{
+            position: relative;
+            width: 100%;
+        }
+        .close{
+            width: 10px;
+            height: 10px;
+            border: 1px solid red;
+            position: absolute;
+            right: 200px;
+            margin-top: -30px;
+        }
+        .active{
+            width: 400px;
+            height: 200px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <button>显示或隐藏</button>
+    <div id="box" class="box">
+        i am div.
+    </div>
+
+    <!--下拉菜单-->
+    <select name="" id="city">
+        <option value="beijing">北京</option>
+        <option value="shanghai">上海</option>
+        <option value="guanzhou">广州</option>
+        <option value="shenzhen">深圳</option>
+    </select>
+
+    <!--关闭广告-->
+    <div class="ad">
+        <img src='../img/剑.png' alt="广告" />
+        <div class="close"></div>
+    </div>
+    
+
+
+    <script>
+        /*
+        //1. get element
+        var oBox = document.getElementById('box');
+        console.log(oBox);
+        var oBtn = document.querySelector('buttton');
+        var type = true
+        //2. 给 按钮 绑定点击事件
+        oBtn.onclick = function(){
+            //给 obtnde style里display属性设置新值
+            //style 设置的行内样式，如果样式比较多是，建议使用className
+
+            if(type){
+                oBox.style.display = 'none';
+            }else{
+                oBox.style.display = '';
+                //className 设置这个dom节点的class名字
+                oBox.className = 'active';
+            }
+            
+        }
+        */
+
+
+        //作业：仿京东鼠标移入移出的效果
+
+        //下拉菜单
+        //1. 获取事件源
+        var oCity = document.getElementById('city');
+        //2. 给谁绑定什么事件
+
+        //3. 绑定的事件触发什么函数
+        //onchange  是option的遏制发生变化时触发
+        oCity.onchange = function(){
+            console.log('事件触发了');
+        }
+
+        //关闭广告
+        var oClose = document.querySelector('.close');
+        var oImg = document.querySelector('img');
+        oClose.onclick = function(){
+            oImg.style.display = 'none';
+            oClose.style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>

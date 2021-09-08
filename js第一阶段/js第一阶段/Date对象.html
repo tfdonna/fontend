@@ -1,0 +1,96 @@
+
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <script>
+            //可以new 的对象：Object、Array、Date
+
+            //创建日期时间对象
+            var date = new Date()    //创建一个当前日期时间对象
+            console.log(date);  //Thu Aug 19 2021 15:37:56 GMT+0800
+
+            //创建任意时间对象
+            var birth = new Date('2000-5-11');
+            console.log(birth);
+            var birth1 = new Date('2000/11/29 21:46:19');
+            console.log(birth1);
+
+            //第二个参数（月份）从0开始计数   例如10掉膘十一月
+            var birth2 = new Date(2000,10,13,17,11,13);
+            console.log(birth2);
+
+            //格式化日期时间
+            var myDate = new Date();
+            var y = myDate.getFullYear();
+            var m = myDate.getMonth()+1;   //月份从0开始，求出来的数值需要+1
+            var week = myDate.getDay();
+            var d = myDate.getDate();
+            var h = myDate.getHours();
+            var min = myDate.getMinutes();
+            var s = myDate.getSeconds();
+            //对于星期使用了 数组下标对象week的值 可以避免使用条件语句
+            var weeekday = ['Sunday','Monday','Tuesday','Wedesday','Thursday','Friday','Saturday'];
+            console.log("today is" +y+'-'+m+'-'+d+ ' ' +h+':'+min+':'+s+" "+weeekday[week]);
+
+            //毫秒数
+            var ex = new Date();
+            console.log(ex.valueOf());
+            console.log(ex.getTime());
+
+            //将日期时间对象隐式的转换为整型数，会变为毫秒数
+            var date = +new Date();
+            console.log(date);
+            //HTML5新增的方式  获取当前日期的毫秒数
+            console.log(Date.now())
+
+            //倒计数
+            /*
+            1.当前时间、结束时间，转毫秒数
+            2.结束时间-当前时间  求差
+            3.再将差转为 年月日时分秒
+            */
+           console.log('countDown');
+
+            function countDown(time){
+                var now = +new Date();
+                var input = +new Date(time);
+
+                time = (input - now)/1000;   //second
+                console.log(time);
+
+                //离倒计数还有多少天
+                var day = parseInt((time / 60) / 60 / 24)
+                console.log('day:'+day);
+                //离倒计数还有多少小时
+                var h = parseInt((time / 60) / 60 % 24)
+                console.log('hour:'+h);
+                //离倒计数还有多少分钟
+                var min = parseInt((time / 60)%60);
+                console.log('min:'+min);
+                //离倒计数还有多少秒
+                var s = parseInt(time % 60);
+                console.log('s:'+s);
+
+                return d+'天'+h+'小时'+min+'分'+s+'秒';
+            }
+            countDown('2021-08-20 18:00:00')
+            
+            //字符串分割为数组
+            var str = '2019-02-29';
+            var arr = str.split('-');
+            console.log(arr);
+            var y = arr[0];//2019
+            var m = arr[1];//02
+            var d = arr[2];//29
+            console.log(y+' '+m+' '+d);
+            //setInterval   定时器
+
+            var d = new Date();
+            var y = d.getFullYear();
+            var now = new Date(y + '-01-01');
+            console.log(now);
+        </script>
+    </body>
+</html>

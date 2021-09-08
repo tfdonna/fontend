@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test" class='test'>
+        zxcvbnm
+    </div>
+    <script>
+        var test = document.querySelector('div');
+        console.log(test);
+        //获取属性, 可以获取用户自定义的属性   getAttribute
+        console.log(test.getAttribute('id'));
+        console.log(test.sex);
+        console.log(test.getAttribute('sex'));
+
+        //可以设置自定义属性  setAttribute
+        test.setAttribute('sex','male');
+        console.log(test.getAttribute('sex'));
+
+        //移除属性   removeAttribute
+        test.removeAttribute('sex');
+        console.log(test.getAttribute('sex'));
+
+    </script>
+</body>
+</html>

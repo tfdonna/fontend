@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	   ul, li{
+	       list-style: none;
+	   }
+	   ul li{
+	       width: 100px;
+	       height: 50px;
+	       background: lightblue;
+	       margin: 10px;
+	   }
+	   .box{
+	       width: 300px;
+           height: 300px;
+           border: 2px dotted red;
+           margin-left: 60px;
+	   }
+	</style>
+</head>
+<body>
+    <ul>
+        <!-- draggable='true'   设置dom节点可以拖动 -->
+        <li draggable="true">1</li>
+        <li draggable="true">2</li>
+        <li draggable="true">3</li>
+    </ul>
+    <div class="box"></div>
+    <script type="text/javascript">
+        window.onload = function () {
+			//获取dom节点
+			var ul = document.querySelector('ul');
+			var li = ul.querySelectorAll('li');
+			var box = document.querySelector('.box');
+			
+			//设置拖拽元素
+			for(var i = 0; i < li.length; i++){
+				//开始拖拽
+				li[i].ondragstart = function (ev) {
+					this.style.background = 'purple';
+					ev.dataTransfer.setData('text', this.innerHTML);
+					
+				}
+				/*
+				//拖拽中
+				li[i].ondrag = function () {				
+					this.remove();
+				}
+				*/
+			}
+			
+			//拖拽目的地
+			box.ondragenter = function () {
+				this.style.background = 'orange';
+			}
+			
+			//想要drop时间出发，必须在dragover阻止默认事件
+			box.ondragover = function (ev) {
+                ev.preventDefault();
+            }
+			//默认 即使在 目的地的上面释放鼠标，也不会触发 drop；   ***
+            box.ondrop = function (ev) {
+
+                var oLi = document.createElement('li');
+                
+                //ev.dataTransfer.getData 获取拖拽的参数
+                oLi.innerHTML = ev.dataTransfer.getData('text');
+                oBox.appendChild(oLi);
+                
+            }
+			//从目的地离开
+			box.ondragleave = function () {
+				this.style.background = 'lightblue';
+				
+			}
+			//拖拽顺序 dragstart drag dragenter dragover dragleave dragend
+		}
+    </script>
+</body>
+</html>

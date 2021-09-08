@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1. 创建对象
+        var obj = {
+            name:' simon',
+            age:'30',
+            eating: function(){
+                console.log('he is eating KFC.');
+            }
+        }
+        console.log(obj.name);
+        obj.eating();
+
+        //使用构造函数创建对象
+
+        function Animal(name, type){
+            this.name = name;
+            this.type = type;
+            this.swimming = function(){
+                console.log(this.name + '在冲浪！');
+            }
+        }
+        //实例化
+        var smy = new Animal('西蒙', '萨摩耶')
+        smy.swimming();
+
+
+        //创建 类
+        class Dog{
+            //构造函数   实例化类的时候，自动执行
+            constructor(name, type){
+                this.name = name;
+                this.type = type;
+            }
+            waiting(){
+                console.log(this.name + ' is waiting his axu.');
+            }
+        }
+        var simon = new Dog('西蒙', '萨摩耶');
+        console.log(simon.name);
+        simon.waiting();
+
+
+        //类的实例
+        class Person{
+            constructor(name, age, height, sex){
+                this.name = name;
+                this.age = age;
+                this.height = height;
+                this.sex = sex;
+            }
+            working(){
+                console.log(this.name + '在工作');
+            }
+        }
+        var teacher = new Person('豆豆', '30', '181', '男');
+        console.log(teacher.sex);
+        var actor = new Person('simon', '29', '186', 'male');
+        actor.working();
+
+
+        //类的继承
+        class Father{
+            constructor(name){
+                this.name;
+            }
+            hello(){
+                console.log('hello');
+            }
+        }
+        class Son extends Father{
+            constructor(name, sex){
+                super(this.name);
+                this.sex = sex;
+
+            }
+        }
+
+    </script>
+</body>
+</html>

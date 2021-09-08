@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var score = [100, 67, 89, 45, 23, 56];
+        //查找几个的学生成绩
+        //格式：数组名.filter(函数)
+        //在这个参数函数中，有两个参数  1.value 值  2.index  下标
+        var newArr = score.filter(function(value, index){
+            return value >= 60;
+        })
+        console.log(newArr);
+
+        //找奇数
+        var jishu = score.filter(function(value){
+            return value % 2 == 1;
+        })
+        console.log(jishu);
+    </script>
+</body>
+</html>

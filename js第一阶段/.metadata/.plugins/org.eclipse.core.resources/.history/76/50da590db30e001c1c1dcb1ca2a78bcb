@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <div id="mydiv" title="天气很好">div</div>
+    
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        //prop   可以获取设置dom节点的属性， 大多用于dom本身就存在的属性
+        console.log($('div').prop('title'));
+        $('div').prop('id', 'changeid');
+    </script>
+</body>
+</html>

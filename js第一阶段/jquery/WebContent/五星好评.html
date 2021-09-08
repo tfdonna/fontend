@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>五星好评</title>
+    <style>
+        img{
+            width: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        评价：
+        <span><img src="images/star-left.png" /></span>
+        <span><img src="images/star-left.png" /></span>
+        <span><img src="images/star-left.png" /></span>
+        <span><img src="images/star-left.png" /></span>
+        <span><img src="images/star-left.png" /></span>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+        $('img').hover(function () {
+            //let n = $('img').index(this + 1);
+            //$("span:lt(" + n + ")").attr('src', 'images/star-on.png');
+            
+        }).mouseleave(function () {
+            $(this).attr('src', 'images/star-left.png');
+        }).click(function () {
+            $(this).attr('src', 'images/star-on.png');
+        })
+    </script>
+</body>
+</html>

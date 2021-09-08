@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>隔行变色加高亮显示</title>
+</head>
+<body>
+    <div>
+        <p>以色待人，色衰而爱驰也；以才侍人，才进得久，互赏而终...</p>
+        <p>以色待人，色衰而爱驰也；以才侍人，才进得久，互赏而终...</p>
+        <p>以色待人，色衰而爱驰也；以才侍人，才进得久，互赏而终...</p>
+        <p>以色待人，色衰而爱驰也；以才侍人，才进得久，互赏而终...</p>
+        <p>以色待人，色衰而爱驰也；以才侍人，才进得久，互赏而终...</p>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+        $('p:odd').css('background', 'lightgreen');
+        $('p:even').css('background', 'skyblue');
+        $('p').hover(function () {
+            $(this).css('background', 'red');
+        }).mouseout(function () {
+            $('p:odd').css('background', 'lightgreen');
+            $('p:even').css('background', 'skyblue');
+        })
+        
+       
+
+    </script>
+</body>
+</html>

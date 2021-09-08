@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- H5的自定义属性 必须包括data-*** -->
+    <div id="aaa" data-tianqi="晴天" data-xiao-hua='小花'>cat&&dog</div>
+    <script>
+        var div = document.getElementById('aaa');
+        //获取自定义属性
+        console.log(div.getAttribute('data-tainqi'));
+        //获取自定义属性 需要将 data- 删除,  2.然后将后面的两个单词转小驼峰
+        console.log(div.dataset.tianqi);
+        console.log(div.dataset.xiaoHua);
+        console.log(div.dataset['xiaoHua']);
+
+    </script>
+</body>
+</html>

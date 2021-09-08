@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Electric{
+            constructor(brand, name, size){
+                this.brand = brand;
+                this.name = name;
+                this.size = size;
+            }
+            fn(){
+                console.log(this.name + ' 可以吹头发');
+            }
+        }
+
+        //原型： 就是构造函数 的prototype属性
+        //作用：对原有的构造函数进行扩展方法或属性
+        //使用原型来扩展构造函数的方法    所有对象可以共享
+        Electric.prototype.prize = function (sold) {
+            console.log(this.name + '价格为' + sold);
+        }
+
+        //实例化
+        var blower = new Electric('飞利浦', '吹风机', 'xs');
+        console.log(blower.brand);
+        blower.fn();
+        //使用原型扩展到方法   
+        blower.prize('2000');
+
+        var hahha = new Electric('英吉利', '剃须刀', 'l');
+        console.log(hahha.size);
+    </script>
+</body>
+</html>

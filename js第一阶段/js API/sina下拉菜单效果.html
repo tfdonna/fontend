@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav{
+            width: 74px;
+            height: 41px;
+            background-color: #edeef0;
+        }
+        .nav .title:hover{
+            color: #ff8400;
+            background-color: #dbdddf;
+        }
+        .nav .title{
+            width: 74px;
+            height: 41px;
+            border: 1px solid #edeef0;
+            line-height: 41px;
+            text-align: center;
+        }
+        .nav .menulist{
+            box-shadow: 3px 3px 3px #eee;
+            display: none;
+        }
+        .nav .menulist div{
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #ff8400;
+            border-left: 1px solid #ff8400;
+            border-right: 1px solid #ff8400;
+            padding-left: 15px;
+        }
+        .nav .menulist div:hover{
+            color: #ff8400;
+            background-color: #f5e5c2;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="nav">
+        <div class="title">
+            微博
+        </div>
+        <div class="menulist">
+            <div>私信</div>
+            <div>评论</div>
+            <div>@我</div>
+        </div>
+    </div>
+    <script>
+        //1.获取事件源
+        var oNav = document.querySelector('.nav');
+        var oTitle = document.querySelector('.title');
+        var oMenu = document.querySelector('.memulist');
+
+        //2. 给下拉菜单绑定鼠标移入事件
+        oNav.onmouseover = function(){
+            oMenu.style.display = 'block';
+        }
+        oNav.onmouseout = function(){
+            oMenu.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

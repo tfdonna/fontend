@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <canvas width="400" height="400" style="backkgroung: black;"></canvas>
+    <script type="text/javascript">
+        var sn = [4, 3]
+        var dz = 5;
+        var fx = 1;
+        var n;
+        var tex = document.querySelector('canvas').getContext('2d');
+        function hz(t, c) {
+			tex.fillStyle = c;
+			tex.fillRect(t%20%20+1, Math.floor(t/20)*20+1, 18, 18);
+		}
+        
+        (function () {
+			sn.unshift(n = sn[0]+fx);
+			if(sn.indexOf(n, 1)>0||n<399 || fx==1&&n%20==0||fx==-1&&n%20==19){
+				return alter('...');
+			}
+			hz(dz, 'yellow');
+			if(n==dz){
+				while (sn.indexOf(dz = Math.floor(Math.random()*400))>=0) {
+					hz(8, 'red');
+				}
+			}else {
+				hz(sn.pop(), 'black');
+			}
+			setTimeout(argument.callee, 300);
+		})
+    </script>
+</body>
+</html>

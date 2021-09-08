@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>返回首页</button>
+    <div></div>
+    <script>
+        //404页面处理(页面丢失，路径出错，找不到该页面)
+        /*
+        1.n s后返回首页
+        2.404 并推荐其他相关信息
+        3.公益， 如走失人口寻找
+        4.按钮，按钮点击跳转到登录页
+        */
+
+        var div = document.querySelector('div');
+        var btn = document.querySelector('button');
+
+        //点击按钮跳转首页
+        btn = onclick = function(){
+            location.href = './hw2-京东秒杀倒计时.html';
+        }
+
+        //3.倒计时跳转首页
+        var num = 5;
+        setInterval(function(){
+            if(num <= 1){
+                location.href = './hw2-京东秒杀倒计时.html';
+            }else{
+                div.innerHTML = '您将在'+ num + 's后返回首页';
+                num--;
+            }
+            
+        },1000)
+
+    </script>
+</body>
+</html>

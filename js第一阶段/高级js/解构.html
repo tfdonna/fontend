@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //数组解构
+        let arr = [1, 2, 3, 4];
+        //解构   es6允许我们按照 一一对应的关系，将数组或对象中的数据的值提取出来，形成一个变量
+        let [a, b, c, d] = arr;
+        console.log(a, b, c, d);
+        //相当于
+        //let a = arr[0];  // b arr[1], c arr[2], d arr[4]
+
+        let [n1, n2, n3, n4] = [1, 2];
+        console.log(n1, n2, n3, n4);
+
+
+        //对象解构
+        let obj = {
+            name: 'simon',
+            age: 30
+        };
+        //{name, age}   两种写法
+        let {name: newname, age: newage} = obj;
+        console.log(newname, newage);
+        //注意： 对对象解构时，解构的变量名和对象中的key必须一致，如果不一致，就解构不出来，获取的数据变成undefined
+        // let {name, newage} = obj;
+        // console.log(name, newage);
+
+
+        
+
+        
+    </script>
+</body>
+</html>

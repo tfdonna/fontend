@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 100px;
+            border: 1px solid red;
+            margin: auto;
+            position: relative;
+        }
+        .box .con{
+            position: absolute;
+            width: 194px;
+            height: 26px;
+            line-height: 50px;
+            font-size: 26px;
+            border: 1px solid pink;
+            top: 20px;
+            display: none;
+        }
+        .box input{
+            margin-top: 55px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="con"></div>
+        <input type="text" placeholder="请输入快递单号" />
+    </div>
+
+    <script>
+        //1. get dom
+        var con = document.querySelector('.con');
+        var input = document.querySelector('input');
+
+        //2. 给文本框绑定 keyup 事件
+        input.addEventListener('keyup', function(ev){
+            //3. 需要 con 显示，并把input框中的数据赋值给con
+            console.log(this.value);
+            if(this.value == ''){
+                con.style.display = 'none';
+            }
+            con.style.display = 'block';
+            con.innerHTML = this.value;
+
+        })
+        input.addEventListener('blur', function(ev){
+            //将con隐藏 
+            con.style.display = 'none';
+        })
+        input.addEventListener('focus', function(ev){
+            //将con隐藏 
+            //判断input中是否有内容
+            if(this.value != ''){
+                con.style.display = 'block';
+            }
+            
+        })
+    </script>
+</body>
+</html>

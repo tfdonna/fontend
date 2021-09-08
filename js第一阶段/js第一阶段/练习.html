@@ -1,0 +1,66 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+
+            //1.字面量的定义对象 使用最简单
+            var computer={
+                color:'银白色',
+                weight:'4kg',
+                brand:'lenovo',
+                type:'t430',
+                watch:function(){
+                    console.log('i am watching movie.');
+                },
+                listen:function(){
+                    console.log('i am listenning to music');
+                }
+            }
+            console.log(computer.type);
+            computer.listen();
+
+
+            //2. 使用new Object创建对象  追加属性用‘=’号
+            var com1 = new Object();
+            //给空对象追加属性
+            com1.color = '黑色';
+            com1.brand = 'lenovo'
+            com1.watch = function(){
+                console.log("i am watching ww");
+            }
+
+            //3. 使用 构建函数 创建对象 
+            function Computer(color, weight, brand, type){
+                this.color = color;
+                this.weight = weight;
+                this.brand = brand;
+                this.type = type;
+                this.watch = function(){
+                    console.log('i am watching wonder woman');
+                }
+            }
+            //使用 构造函数创建新的对象
+            var com2 = new Computer('red','2kg','apple','the newest');
+            console.log(com2.brand);
+
+
+            var dog = {
+                dname : 'coco',
+                type:'阿拉斯加',
+                age:'5',
+                color:'white',
+                watch:function(){
+                    console.log('i am watching movie.');
+                },
+                listen:function(){
+                    console.log('i am listenning to music');
+                }
+            }
+            console.log(dog.type);
+            computer.listen();
+
+        </script>
+    </body>
+</html>

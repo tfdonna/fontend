@@ -1,0 +1,211 @@
+<!--
+李婷芳 - js作业 - day4
+1.创建一个电脑对象 三种方式
+2.遍历以下对象
+3.请描述以下输出结果及运行原因
+5.制作一个函数，getDayNum('y-m-y'),可以返回指定日期是当前年的第几天
+如： getgetDayNum('2019-1-2')    new Date(2021,1,5)
+6.使用math制作一个16进制的随机颜色
+7.书写一个函数，按段指定数据是否存在与指定数组中
+8. 以下有两个数组，一个数组arr是班级里所有的学员的名称，一个数组currentArr是提交了每日反馈的学员名单，请创建一种算法，把未提交每日作业的学员筛选出来
+9.随机学员
+-->
+<html>
+    <body>
+        <script>
+            //1 - 基础练习
+            //1.创建一个电脑对象 三种方式
+            //way 1
+            var computer = {
+                color:'red',
+                weight:'2kg',
+                brand:'Lenove',
+                type:'L490',
+                watch:function(){
+                    console.log('我在看电影');
+                },
+                listen:function(){
+                    console.log('我在听音乐');
+                },
+                coding:function(){
+                    console.log('我在敲代码');
+                }
+            }
+            console.log(computer.brand);
+            computer.listen();
+
+            //way2
+            var com = new Object();
+            com.color = '黑色';
+            com.weight = '2kg';
+            com.brand = 'lenovo';
+            com.type = 'L490';
+            com.watch = function(){
+                console.log("我在看电影");
+            },
+            com.listen = function(){
+                console.log('我在听音乐');
+            },
+            com.coding = function(){
+                console.log('我在敲代码');
+            },
+            console.log(com.color);
+            com.coding();
+
+            //way 3
+            function Computer(color, weight, brand, type){
+                this.color = color;
+                this.weight = weight;
+                this.brand = brand;
+                this.type = type;
+                this.watch = function(){
+                    console.log('我在看电影');
+                };
+                this.listen = function(){
+                    console.log('我在听音乐');
+                }
+                this.coding = function(){
+                    console.log('我在敲代码');
+                }
+            }
+
+            var com2 = new Computer('red','2kg','apple','Mac11.0.1');
+            console.log(com2.type);
+            com2.watch();
+
+
+            //2.遍历以下对象
+            var dog = {
+                dname : 'coco',
+                type:'阿拉斯加',
+                age:'5',
+                color:'white'
+            }
+            for(var i in dog){
+                console.log(i);
+                console.log(dog[i]);
+            }
+
+
+            //3.请描述以下输出结果及运行原因
+            var num = 1;
+            function demo(){
+                console.log(num);
+                function demoSon(){
+                    console.log(num);
+                    num = 33;
+                    console.log(num);
+                }
+                var num = 2
+                demoSon();
+            }
+            demo();
+            /*
+            运行结果：undefined  2  33
+            undefined:函数中没有定义num，函数外定义的num没有传进函数
+            2：子函数demoSon向父函数demo找到变量，从而使用了父级里的变量2
+            33：在函数demoSon里自己定义的变量33
+            */
+
+
+            //4.使用argument完成函数getResult，实现得到输入的所有数值中的min,max,ave,sum
+            //不做
+
+
+            //5.计算指定让日期是今年的第几天
+            function getDayNum(time){
+                var arr = time.split('-');
+                var input = +new Date(time);
+
+                var date = new Date();
+                var y = date.getFullYear();
+                var now = +new Date(y + '-01-01');
+                var sub = (input - now)/1000;
+                
+                var day = parseInt((sub / 60) / 60 / 24) + 1;
+                return time + '距离今年的第' + day + '天';
+            }
+            console.log(getDayNum('2021-1-5'));
+
+
+            //6.生成16进制随机颜色
+            var col = '#';
+            var arr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+            for (var i = 0; i < 6; i++){
+                var color = parseInt(Math.random()*(arr.length-1));
+                col += arr[color];
+            }
+            console.log(col);
+
+
+            function getRandom(min,max){
+                return Math.floor(Math.random()*(max-min+1)+min);
+            }
+
+
+            //7.书写一个函数，按段指定数据是否存在与指定数组中
+            function exist(data, arr){
+                for(var i = 0; i < arr.length; i++){
+                    if(data == arr[i]){
+                        return true;
+                    }
+                }
+                return false;
+            }
+            var example = exist(11,[5,11,12,13,29,10,28]);
+            console.log(example);
+
+
+            //8. 以下有两个数组，一个数组arr是班级里所有的学员的名称，一个数组currentArr是提交了每日反馈的学员名单，请创建一种算法，把未提交每日作业的学员筛选出来
+            var arr = ["张瑞淑", "徐海涛", "谢岗岗", "薛鹏", "魏明杨", "党婷", "熊飞", "郑翠翠", "李航卫", "屈涛", "汪孝双", "代攀飞", "武志钰", "王亚龙", "周芙榕", "李涛", "郝颖", "文冲洋", "王旭拯", "胡佳豪", "寇晓丽", "马晓晗","王思聪", "张绿", "李德", "郑萍", "张凯", "张嘉成", "葛云侠", "杨磊", "任变", "景德", "高卷林", "刘益凡", "赵娜", "陈章鸣", "张荣召", "赵凯旋", "程倩倩", "脱朝平", "刘吉利", "郭苗苗", "马建峰", "潘瑞", "闫翔", "马晨", "李轩轩", "黄红梅", "刘书彬", "罗强", "刘东","王可可","陈泽文", "李嘉琪", "段佳琦", "黄燕", "邱淑鸿", "宋翔宇", "王波", "樊琳", "王兆国", "许成", "李兴"];
+            var currentArr = ["张瑞淑", "徐海涛", "谢岗岗", "薛鹏", "魏明杨", "党婷", "熊飞", "郑翠翠", "李航卫", "屈涛", "汪孝双", "代攀飞", "武志钰", "王亚龙", "周芙榕", "李涛", "郝颖", "文冲洋", "王旭拯", "胡佳豪", "寇晓丽", "马晓晗", "张绿", "李德","郑萍", "张凯", "张嘉成", "葛云侠", "杨磊", "任变", "景德", "高卷林", "刘益凡", "赵娜", "陈章鸣", "张荣召", "赵凯旋", "程倩倩", "脱朝平", "刘吉利", "郭苗苗", "马建峰", "潘瑞", "闫翔", "马晨", "李轩轩", "黄红梅", "刘书彬", "罗强", "刘东", "陈泽文", "李嘉琪", "段佳琦", "黄燕", "邱淑鸿", "宋翔宇", "王波", "樊琳", "王兆国", "许成", "李兴"];
+            function check(arr, currentArr){
+                var newArr = [];
+                for(var i = 0; i < arr.length; i++){
+                    for(var j = 0; j < currentArr.length; j++){
+                        if((arr[i] == currentArr[j]) && newArr.indexOf(arr[i]) == -1){
+                            newArr.push(arr[i]);
+                        }
+                    }
+                    
+                }
+            }
+            var check = check(arr,currentArr);
+            console.log(check);
+
+            //9.随机选4个学员但不能重复
+            var stu = ['donna','simon','taylor','taylor','selena','gal','crazy','joe','ave','don','cherry','miki'];
+            var newArr = [];
+            //循环选择4位同学
+
+            /*
+            //该for循环会有重复
+            for(var i = 0; i < 4; i++){
+                newArr.push(arr[getRandom(0,stu.length-1)]);
+            }
+            */
+           //way 1
+           //购物车中经常使用
+            for(var i = 0; i < 4; i++){
+                var stud = stu[getRandom(0,stu.length-1)];
+                if(newArr.indexOf(stu[num]) == -1){  //-1表示没有这个新学员
+                    newArr.push[stud];
+                }
+                else{//数组中有这个学员，但是i已经默认+1
+                    i--;    //有重复的情况下，把i再让出来，i-1，再多循环一次
+                }
+            }
+            console.log(newArr)
+
+            //way 2
+            var newArr = [];
+            while(newArr.length<4){
+                var num = Math.floor(Math.random()*(stu.length-1));
+                if(newArr.indexOf(stu[num]) === -1){
+                    newArr.push(stu[num]);
+                }
+            }
+            console.log(newArr)
+        </script>
+    </body>
+</html>

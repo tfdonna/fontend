@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 600px;
+            height: 600px;
+            background: #000;
+            margin: 20px auto;
+            padding-top: 20px;
+        }
+        .number{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            color: #fff;
+            top: 10%;
+
+        }
+        .bubble-home{
+            width: 150px;
+            height: 50px;
+            background: #00ff6f;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -75px;
+            border-radius: 150px 150px 0 0;
+        }
+        .bubble{
+            width: 20px;
+            height: 20px;
+            background: #00ff6f;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, 0);
+            z-index: 100;
+        }
+        @keyframes bubble {
+            0%{bottom:0}
+            100%{bottom: calc(100%-260%);}
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="contranst">
+            <div class="number">97.6%</div>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <div class="circle"></div>
+            <div class="bubble-home"></div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border:1px solid springgreen;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">click</button>
+
+    <div class="box"> 测试鼠标事件 </div>
+    User: <input type="text" id="user"/>
+
+    <script>
+        //1.事件源   事件触发对象
+        var oBtn = document.querySelector('#btn');
+        //2.事件类型   如：点击事件
+
+        //3.事件的处理程序    (给oBtn绑定了一个点击事件，只要点击了这个按钮就会触发这个事件，去执行绑定的函数)
+        //这样绑定的事件，可以点击触发多次
+        oBtn.onclick = function(){
+            console.log('clicked!');
+        }
+
+        /*
+        关于事件有三步骤：
+        1. 获取事件源， 获取 dom节点
+        2. 给这个节点绑定事件， 需要确定绑定的是什么类型的事件， 如：点击、鼠标移上、 获取焦点……
+        3. 添加事件处理程序， 如果触发这个事件则处理程序就会运行
+        */
+
+
+        //测试鼠标事件
+        var oBox = document.querySelector('.box');
+        oBox.onmouseover = function(){
+            console.log('over over over');
+        }
+        oBox.onmouseout = function(){
+            console.log('out out out');
+        }
+
+        //onfocus只在文本框类起作用
+        var oUser = document.querySelector('#user');
+        oUser.onfocus = function(){
+            console.log('the frame is getting focus');
+        }
+        oUser.onblur = function(){
+            console.log('the frame is losing focus');
+        }
+        //拖拽
+        /*
+        window.onmousemove = function(){
+            console.log('鼠标移动');
+        }
+        window.onmouseup = function(){
+            console.log('鼠标抬起');
+        }
+        window.onmousedown = function(){
+            console.log('鼠标按下')
+        }
+        */
+    </script>
+</body>
+</html>

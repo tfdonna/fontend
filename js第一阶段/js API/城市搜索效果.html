@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <button>search</button>
+    <ul>
+        <li>北京</li>
+        <li>上海</li>
+        <li>广州</li>
+        <li>深圳</li>
+    </ul>
+    <script>
+        //1. 获取dom
+        var input = document.querySelector('input');
+        var btn = document.querySelector('button');
+        var li = document.querySelectorAll('li');
+
+        btn.onclick = function(){
+            for (var j = 0; j < li.length; j++){
+                li[j].style.background = '';
+            }
+
+            var value = input.value;
+            var type = false;
+            //在循环中查找value是否存在
+            for (var i = 0; i < li.length; i++){
+                if(li[i].innerHTML == value){
+                    li[i].style.background = 'red';
+                    type = true;
+                    break;
+                }
+            }
+            //找了所有都没有这个城市，安祖条件，弹出提示
+            if(!type){
+                alert('no this city');
+            }
+        }
+
+    </script>
+</body>
+</html>

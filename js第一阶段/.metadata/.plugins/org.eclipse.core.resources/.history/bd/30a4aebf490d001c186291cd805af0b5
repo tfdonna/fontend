@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+
+    <script src="./jquery.js"></script>
+    <script>
+    $(function () {
+        $("button").click(function () {
+            //链式写法
+            //建议：链 写的不要太长，越长后期维护成本越高
+            // $(this).css("background", "green").siblings("button").css("background", "");
+            $(this).css("background", "green");
+            $(this).siblings("button").css("background", "");
+        })
+    })
+</script>
+</body>
+</html>

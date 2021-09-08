@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+	*{
+	   margin: 0;
+	   padding: 0;
+	}
+	.cart{
+	   width: 1000px;
+	   position: relative;
+	   margin: 10px;
+	}
+	.title{
+	   font-size: 15px;
+	   color: red;
+	   font-weight: bold;
+	   border-bottom: 2px solid red;
+	   width: 63px;
+	   padding: 5px;
+	}
+	ul, li{
+	   list-style: none;
+	   display: inline-block;
+	   background: #eee;
+	   padding-top: 5px; 
+	   padding-left: 6px; 
+	}
+	ul{
+		width: 1000px; 
+		height: 40px; 
+		justify-content:center;
+	}
+	#check_box{width: 80px;}
+	#goods, .describe{width: 500px;}
+	#price, .price{width: 80px;}
+	#num, .num{width: 80px;}
+	#sum, .sum{width: 80px}
+	#operation, .del{width: 80px;}
+	.product{
+	   height: 100px;
+	   width:100%;
+	   border-top: 2px solid grey;
+	   background:     #FDF5E6;
+	   padding-left: 10px;
+	   margin-top: 10px;
+	   padding-top: 20px
+	}
+	.product div{display: inline-block; padding-right: 5px;}
+	.num input {
+	   width: 15px;
+    }
+	img{width: 15%;}
+	.end{
+	   width: 100%;
+	   height: 40px;
+	   border-bottom: 1px solid grey;
+	   border-top: 1px solid grey;
+	   margin-top: 10px;
+	}
+	.end button{
+		width: 80px; 
+		height:100%;
+		background: red; 
+		color: white;
+		text-align: center;
+		font-weight: bold;
+		font-size: 15px;
+		border: none;
+	}
+	</style>
+</head>
+<body>
+    <div class="cart">
+        <div class="title">全部商品</div>
+        <ul>
+            <li id="check_box">
+                <input type="checkbox" id="check_all" />全选
+            </li>
+            <li id="goods">商品</li>
+            <li id="price">价格</li>
+            <li id="num">数量</li>
+            <li id="sum">小计</li>
+            <li id="operation">操作</li>
+        </ul>
+        <div class="product">
+            <div id="check_box"><input type="checkbox" id="check" /></div>
+            <div class="describe">
+                <span><img src="images/芦丹氏.jpg" align="top"/></span>
+                <span>Serge&nbsp;Lutens芦丹氏柏林少女玫瑰香水50ml</span>
+            </div>
+            
+            <div class="price">¥1140</div>
+            
+            <div class="num">
+                <div class="p-quantity">
+			       <input type="button" class="decrease" value="-">
+			       <input type="text" class="quantity" value="1"/>
+			       <input type="button" class="increase" value="+">
+                </div>
+            </div>
+            
+            <div class="sum"></div>
+            
+            <div class="del">删除</div>
+        </div>
+        
+        <div class="product">
+            <div id="check_box"><input type="checkbox" id="check" /></div>
+            <div class="describe">
+                <span><img src="images/frederic.jpg" align="top"/></span>
+                <span>frederic&nbsp;malle馥马尔法国情人French Lover50ml</span>
+            </div>
+            
+            <div class="price">¥1250</div>
+            
+            <div class="num">
+                <div class="p-quantity">
+                   <input type="button" class="decrease" value="-">
+                   <input type="text" class="quantity" value="1"/>
+                   <input type="button" class="increase" value="+">
+                </div>
+            </div>
+            
+            <div class="sum"></div>
+            
+            <div class="del">删除</div>
+        </div>
+        
+        <div class="product">
+            <div id="check_box"><input type="checkbox" id="check" /></div>
+            <div class="describe">
+                <span><img src="images/百瑞德.jpg" align="top"/></span>
+                <span>Byredo百瑞德荒漠玫瑰Mojave：50ml</span>
+            </div>
+            
+            <div class="price">¥1150</div>
+            
+            <div class="num">
+                <div class="p-quantity">
+                   <input type="button" class="decrease" value="-">
+                   <input type="text" class="quantity" value="1"/>
+                   <input type="button" class="increase" value="+">
+                </div>
+            </div>
+            
+            <div class="sum"></div>
+            
+            <div class="del">删除</div>
+        </div>
+        
+        <div class="product">
+            <div id="check_box"><input type="checkbox" id="check" /></div>
+            <div class="describe">
+                <span><img src="images/kilian.jpg" align="top"/></span>
+                <span>kilian凯利安亲密一刻50ml</span>
+            </div>
+            
+            <div class="price">¥1510</div>
+            
+            <div class="num">
+                <div class="p-quantity">
+                   <input type="button" class="decrease" value="-">
+                   <input type="text" class="quantity" value="2"/>
+                   <input type="button" class="increase" value="+">
+                </div>
+            </div>
+            
+            <div class="sum"></div>
+            
+            <div class="del">删除</div>
+        </div>
+        
+        <div class="end">
+            <button>结算</button>
+            <span>合计：</span>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    $(function () {
+    	//全选事件
+        $('#check_all').change(function () {
+            $('#check_box input').prop('checked', $(this).prop('checked'));
+        })
+       
+        $('#check_box input').change(function () {
+            if ($('#check_box input:checked').length === $("#check_box input").length) {//所有都选中
+                $("#check_all").prop("checked", true);
+            } else {
+                $("#check_all").prop("checked", false);
+            }
+        })
+        
+        //增减商品数量
+        $('.decrease').click(function () {
+			var n = $(this).siblings('.quantity').val();
+			if(n == 1){
+				return false;
+			}
+			n--;
+			$(this).siblings('.quantity').val(n);
+            //计算总价
+            var total = $(this).parents('.num').siblings('.price').html();
+            total = total.substr(1);
+            var price = (total * n).toFixed(2);
+            $(this).parents('.num').siblings('.sum').html('¥'+price);
+		})
+		$('.increase').click(function () {
+            var n = $(this).siblings('.quantity').val();
+            n++;
+            $(this).siblings('.quantity').val(n);
+            console.log(n);
+          //计算总价
+            var total = $(this).parents('.num').siblings('.price').html();
+            total = total.substr(1);
+            var price = (total * n).toFixed(2);
+            $(this).parents('.num').siblings('.sum').html('¥'+price);
+        })
+        //结算总价
+        
+        var count = 0;
+    	var moneu = 0;
+    	$('#check input:checked').
+        
+        
+        
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span>i am span text. </span>
+    </div>
+
+    <button>切换</button>
+    <img src="../img/剑.png" width="30%"/>
+    <div>老温</div>
+
+
+    <script>
+        var oDiv = document.querySelector('div');
+        console.log(oDiv.innerHTML);
+        console.log(oDiv.innerText);
+
+        //切换提醒图片
+        var oBtn = document.querySelector('button');
+        var oSword = document.querySelector('img');
+        var oDiv = document.querySelector('div');
+        //
+        var type = true;
+        oBtn.onclick = function(){
+            oSword.src = '../img/扇子.png';
+            soDiv.innerText = '阿絮';
+            //点击时取反
+            /*
+            if(type){
+                oSword.src = '../img/扇子.png';
+                oDiv.innerText = '老温';
+            }else{
+                oSword.src = '../img/剑.png';
+                oDiv.innerText = '阿絮';
+            }*/
+        }
+    </script>
+
+</body>
+</html>

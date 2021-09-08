@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        打车 起步价 10元 (2公里)，每多一公里增加 5元，
+        输入公里数，算出打车的价格，
+        如果有堵车的情况，总价格 就增加10元
+        */
+
+        var car = (function(){
+            var start = 10;
+            var total = 0;
+
+            return{
+                price: function(mileage){
+                    if(mileage <= 2){
+                        total = start;
+                    }else{
+                        total = start + (mileage - 2) * 5;
+                    }
+                    return total;
+                },
+                crowd: function(flag){
+                    return flag? total + 10 : total;
+                }
+            }
+
+        })();
+        console.log(car.price(3));
+        console.log(car.crowd(true));
+
+        console.log(car.price(9));
+        console.log(car.crowd(false));
+
+        console.log(car.price(2));
+    </script>
+</body>
+</html>

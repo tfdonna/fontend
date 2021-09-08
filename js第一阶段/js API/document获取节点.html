@@ -1,0 +1,106 @@
+<!--
+    调接口要预留时间调试！！！！
+    BOM包含DOM
+    获取页面元素：documen.getElementById(id)
+    一般：id给js用，class个css用
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document获取元素</title>
+    <style>
+        .doc{
+            width: 100px;
+            height: 100px;
+            border: 1px solid springgreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="doc" class="doc"> 
+        i am a div.
+    </div>
+
+    <ul id="list1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <ul id="list2">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <div class='test'>
+        hope get element by class
+    </div>
+    <p id="myp">i am a 'P'</p>
+    <a href="www.baidu.com">baidu</a>
+    <a href="www.163.com">wangyi</a>
+
+    <script>
+        //1. 通过id获取'doc'   获取dom对象
+        var oDoc = document.getElementById('doc');
+        console.log(oDoc);
+
+        //2. 通过标签名获取 对象
+        //获取oList1下面的li
+        var oList1 = document.getElementById('list1');
+        var aLi = oList1.getElementsByTagName('li');
+        console.log(aLi);
+
+        //因为获取的元素是数组，所以想要操作他幼遍历
+        for(var i = 0; i < aLi.length; i++){
+            //innerHTML   表示某个标签里的html的数据
+            console.log(aLi[i].innerHTML);
+        }
+
+        //3.H5新增的获取DOM内容的方式
+        //希望通过 class 来获取对象，结果是个数组
+        var aTest = document.getElementsByClassName('test');
+        console.log(aTest);
+        //获取元素里的数据
+        //因为 getElementsByClassName 获取到的是一个数组，不能直接调用innerHTML的属性
+        //console.log(aTest.innerHTML);  //undefinded
+        //必须先获取到数组中的对象 在调用属性aTest[0].innerHTML
+        console.log(aTest[0].innerHTML);
+        
+
+        //4.querySelector 可以通过  class id 标签来获取对象, 获取的结果是一个对象
+        //不管有多少个 符合条件，最终只返回第一个
+        var oDiv = document.querySelector('.test');
+        console.log(oDiv);
+        var oP = document.querySelector('#myp');
+        console.log(oP);
+        var oA = document.querySelector('a');
+        console.log(oA);
+
+        //5.querySelectorAll  可以通过class id 标签名来获取节点， 获取的结果是一个数组
+        var oDiv = document.querySelectorAll('.test');
+        console.log(oDiv);
+        var oP = document.querySelectorAll('#myp');
+        console.log(oP);
+        var oA = document.querySelectorAll('a');
+        console.log(oA);
+        
+        //获取一个元素用querySelector；   获取多个元素用querySelectorAll
+
+        //6. 获取特殊元素（如body、HTML)
+        //body
+        var oBody = document.body;
+        console.log(oBody);
+        //html
+        var oHMTL = document.documentElement;
+        console.log(oHMTL);
+    </script>
+</body>
+</html>

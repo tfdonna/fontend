@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+    <div>1</div>
+
+    <script type="text/javascript" src="jquery.js">
+        //原生js 获取div
+        //var div = document.querySelectorAll('div');
+        var div = document.querySelector('div');
+        console.log(div);
+        
+        //js 转 jQuery
+        console.log($(div));
+        $(function () {
+			console.log($('div'));
+			//怎样将jQuery对象转为js对象
+			var jsDiv = $('div')[0];
+			var jsDiv1 = $('div').get(0);
+			console.log(jsDiv1);
+			
+		})
+		//注意：jQuery的0号元素 是js的对象
+    </script>
+</body>
+</html>

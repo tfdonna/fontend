@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //递归：函数内部自己调用自己
+        // for(var i = 0; i < 6; i++){
+        //     console.log(i);
+        // }
+
+        //递归
+        // var sum = 0;
+        // function fn(){
+        //     console.log('coming!' + sum);
+        //     //任何递归都需要结束条件   如果没结束条件，会变为死循环
+        //     if(sum == 6){
+        //         return;
+        //     }
+        //     num++;
+        //     fn();
+        // }
+        // fn();
+
+        //1-n阶乘  
+        var factorial = 1;
+        var n = prompt('input n');
+        for(var i = 1; i <= n; i++){
+            factorial *= i;
+        }
+        console.log(factorial);
+
+        //使用递归完成阶乘
+        function fn(n){
+            if(n == 1){
+                return 1;
+            }
+            return n * fn(n-1);
+        }
+        console.log(fn(5));
+
+    </script>
+</body>
+</html>

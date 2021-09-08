@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <style>
+        .box{
+            width: 600px;
+        }
+        h3{
+            border-bottom: 1px solid grey;
+        }
+        textarea{
+            width: 595px;
+            height: 300px;
+        }
+        button{
+            width: 595px;
+            height: 50px;
+        }
+        button:hover{
+            background-color: green;
+        }
+        .doc{
+            /*border: 1px solid rgb(143, 23, 23);*/
+            min-height: 100px;
+            margin-bottom: 10px;
+        }
+        .item{
+            margin-left: 10px;
+            width: 500px;
+            border: 1px solid rgb(143, 23, 23);
+            padding-left:10px;
+            border-bottom-left-radius: 5px;
+        }
+        .del{
+            width: 10%;
+            height: 22px;
+            float: right;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>留言内容：</h3>
+        <div class="doc"></div>
+        <textarea cols="30" rows="10" placeholder="请输入留言内容！"></textarea>
+        <button>发表留言</button>
+    </div>
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+        /*
+        需求：留言板
+        1.获取元素
+        2.给按钮绑定事件
+        3.获取留言板内容
+        4.创建元素，将内容放进去
+        5.将创建的节点 添加到doc
+        */
+       
+        $(function () {
+			var floor = 0;
+			$('button').click(function () {
+				floor++;
+				var text = $('textarea').val();
+				$('.doc').append(`<p>${floor}楼:${text}</p>`);
+				$('textarea').val('');
+				//获取光标闪动   让textarea获取到 
+				$('textarea').focus();
+			})
+		})
+    </script>
+</body>
+</html>

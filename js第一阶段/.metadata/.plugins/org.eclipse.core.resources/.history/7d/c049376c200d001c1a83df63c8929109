@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script type="text/javascript" src="jquery.js">
+        //原生js 获取div
+        var div = document.querySelectorAll('div');
+        console.log(div);
+        $(function () {
+			console.log($('div'));
+		})
+    </script>
+</body>
+</html>

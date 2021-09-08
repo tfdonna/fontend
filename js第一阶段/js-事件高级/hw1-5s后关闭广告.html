@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5s后关闭广告</title>
+    <style>
+        .ad{
+            position: relative;
+            width: 100%;
+        }
+        img{
+            width: 50%;
+
+        }
+        .close{
+            font-size: 15px;
+            color: white;
+            padding-left: 3px;
+            margin: -190px 0 0 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ad">
+        <img src="../img/3.jpg" alt="ad" />
+        <div class="close"></div>
+    </div>
+
+    <script>
+
+        //1. 获取 dom节点 事件源
+        var img = document.querySelector('img');
+        var close = document.querySelector('.close');
+
+        //2. 绑定事件
+        var num = 6;
+        var time = setInterval(function(){
+            num--;
+            close.innerHTML = num +'s后关闭广告';
+            //如果 num为1，停止定时器
+            if(num == 0){
+                clearInterval(time);
+                close.innerHTML = '关闭广告';
+                close.onclick = function(){
+                    img.style.display = 'none';
+                    close.style.display = 'none';
+                }
+            }
+            }, 1000);
+        
+    </script>
+    
+
+</body>
+</html>

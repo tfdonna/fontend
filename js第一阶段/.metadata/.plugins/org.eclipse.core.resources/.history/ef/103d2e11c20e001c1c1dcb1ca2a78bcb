@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	   .father{
+	       width: 400px;
+	       height: 400px;
+	       background: lightgreen;
+	       position: relative;
+	       margin: 10px;
+	       left: 100px;
+	       top: 100px;
+	   }
+	   .son{
+	       width: 100px;
+           height: 100px;
+           background: skyblue;
+           position: absolute;
+           top: 50px;
+           left: 50px;
+	   }
+	   body {
+	       height: 3000px;    
+       }
+       .group{
+            width: 50px;
+            height: 50px;
+            border: 1px solid green;
+            border-radius: 50%;
+            background: lightyellow;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            display: none;
+       }
+	</style>
+</head>
+<body>
+   <div class="father">
+	   <div class="son">子节点</div>
+   </div>
+   
+   <div id="group" class="group">上去</div>
+   
+   
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript">
+       //offset  获取偏移量
+       console.log($('.son').offset());
+       //position 相对于父节点的定位信息
+        console.log($('.son').position());
+       
+       //返回顶部
+       $(window).scroll(function () {
+    	   $(function () {
+    	        var top = $(document).scrollTop();
+    	        if(top >= 300){
+    	            $('#group').show();
+    	        }else{
+    	            $('#group').hide();
+    	        }
+    	        
+    	        $('#group').click(function () {
+    	            $(document).scrollTop(0);
+    	            $('body').animate({scrollTop: 0});
+    	        })
+    	    })
+	})
+       
+   </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 5];
+        var num = 0;
+        for(var i = 0; i < arr.length; i++){
+            sum += arr[i];
+        }
+        console.log(sum);
+
+        //forEach
+        //写法： 对象名.forEach(函数)
+        //forEach 的参数类型是函数， 这个函数有有三个参数：值，下标，数组
+        arr.forEach(function(value, index, array){
+            console.log('值:' + value);
+            console.log('下标:' + index);
+            console.log('数组:' + array);
+            sum += value;
+        })
+
+        //forEach 与 for相比，对于复杂数据，可以少很多代码
+        arr.forEach(function(item){
+            sum += item;
+        })
+        console.log(sum);
+
+        //map
+        arr.map(function(value, index, array){
+            sum += value;
+        })
+        console.log(sum);
+        var result = arr.map(function(value){
+            value *= 2;
+            return value;
+        })
+        console.log(result);
+
+        /*
+        map 和 forEach 的相同点：
+        1.都是循环遍历数组中的每一项
+        2.forEach 和 map 方法是每次执行函数都支持3个参数
+        3.匿名函数中的this都是指向window
+        
+        map 和 forEach 的不同点：
+        forEach() 没有返回值
+        map() 有返回值，可以return 出来
+        */
+    </script>
+</body>
+</html>

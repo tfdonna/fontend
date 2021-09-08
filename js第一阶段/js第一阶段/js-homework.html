@@ -1,0 +1,116 @@
+<!--      李婷芳   每日作业-JavaScript第06天    -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日作业-JavaScript第06天</title>
+</head>
+<body>
+    <script>
+        //1.0 数组去重
+        var  arr = [1,2,3,1,1,3,4,5,7,71,1,2,2,4,4];
+        var newArr = [];
+        for(var i = 0; i < arr.length; i++){
+            if(newArr.indexOf(arr[i]) < 0){
+                newArr.push(arr[i]);
+            }
+        }
+        console.log(newArr);
+
+        //1.1 数组操作   把下面数组的首位两个元素互换   push pop shift unsiift
+        var arr1 = [1,2,3,4,5,6,7,8];
+        var first = arr1.shift();
+        var last = arr1.pop();
+        var change = arr1.unshift(last);
+        var result = arr1.push(first);
+        console.log(arr1);
+
+        /*
+        for(var i = 0; i < arr1.length; i++){
+            temp = arr1[0];
+            arr1[0] = arr1[arr1.length-1];
+            arr1[arr1.length-1] = temp;
+        }
+        console.log(arr1);
+        */
+        
+        //1.2 计算指定日期是今年的第几天
+        function getDayNum(time){
+            var arr = time.split('-');
+            var input = +new Date(arr[0], arr[1] - 1, arr[2]);
+            var now = +new Date(arr[0], 0, 0);
+            var sub = (input - now)/1000;
+            var day = parseInt((sub / 60) / 60 / 24);
+                return time + '是距离今年的第' + day + '天';
+        }
+        console.log(getDayNum('2021-1-5'));
+
+        //1.3 16进制随机颜色
+        var col = '#';
+        var arr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+        for (var i = 0; i < 6; i++){
+            var color = parseInt(Math.random()*(arr.length-1));
+            col += arr[color];
+        }
+        console.log(col);
+
+        //1.4 字符串操作
+        var str = 'abaasdffggghhjjkkgfddsssss3444343';
+        //(1) 字符串的长度
+        console.log(str.length);
+        //(2) 取出指定位置的字符
+        console.log(str.charAt(9));
+        //(3)查找指定字符是否在以上字符串中存在
+        console.log(str.indexOf('c') != -1);
+        //(4)替换指定的字符
+        var sence = 's';
+        str = str.split('').join(' ');
+        //console.log(str);
+        while(str.indexOf(sence)!==-1){
+            str = str.replace(sence,'**');
+        }
+        //console.log(str);
+        str = str.split(' ').join('');
+        console.log(str);
+
+        //1.5 将短横的写法转小驼峰
+        var brs = 'border-right-color';
+        var arr3 = brs.split('-');
+        var newArr = [];
+        //var one = arr3[1].slice(0,1).toUpperCase();
+        //var two = arr3[2].slice(0,1).toUpperCase();
+        for(var i =1; i < arr3.length; i++){
+            var up = arr3[i].slice(0,1).toUpperCase();
+            var down = arr3[i].slice(1);
+            newArr.push(up,down);
+            
+        }
+        console.log(newArr);
+        var str = arr3[0]+newArr.join();
+        while(str.indexOf(',')!==-1){
+            str = str.replace(',','');
+        }
+        console.log(str);
+
+        function zhuanTuoFeng(str){
+            //将字符串转 数组 
+            var arr = str.split('-');
+            //创建一个字符串，保存下来 转弯驼峰式的字符串
+            var str = '';
+            for(var i = 0; i < arr.length; i++){
+                if(i == 0){
+                    str += arr[0];
+                }else{
+                    str += arr[i].substr(0,1),toUpperCase() + arr[i].substr(1);
+                }
+            }
+            return str;
+        }
+        var data = prompt('please input a string with - :');
+        console.log(zhuanTuoFeng(data));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*rest*/
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            font-size: 12px;
+        }
+        ul, li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .wrapper{
+            width: 250px;
+            height: 248px;
+            margin: 100px auto;
+            border: 1px solid pink;
+        }
+        .left, .right{
+            float: left;
+        }
+        .left{
+            width: 48px;
+            border-right: 1px solid pink;
+        }
+        .left li a{
+            width: 48px;
+            height: 27px;
+            display: block;
+            border-bottom: 1px solid pink;
+            line-height: 27px;
+            color: black;
+        }
+        .left li a:hover{
+            background: pink;
+        }
+        .right div{
+            display: none;
+        }
+        .right div .active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul class="left">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+        </ul>
+        <div class="right">
+            <div class="active"><a href="#"><img src="./images/01.jpg"/></a></div>
+            <div><a href="#"><img src="images/02.jpg"/></a></div>
+            <div><a href="#"><img src="images/03.jpg"/></a></div>
+            <div><a href="#"><img src="images/04.jpg"/></a></div>
+            <div><a href="#"><img src="images/05.jpg"/></a></div>
+            <div><a href="#"><img src="images/06.jpg"/></a></div>
+            <div><a href="#"><img src="images/07.jpg"/></a></div>
+            <div><a href="#"><img src="images/08.jpg"/></a></div>
+            <div><a href="#"><img src="images/09.jpg"/></a></div>
+        </div>
+    </div>
+
+    <script src="./jquery.js"></script>
+    <script>
+        $(function () {
+            $('.left li').onmouseover(function () {
+                let index = $(this).index();
+                $('.right div').eq(index).show();
+                $('.right div').eq(index).siblings('div').hide();
+            })
+        })
+    </script>
+</body>
+</html>

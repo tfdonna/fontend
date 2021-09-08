@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset系列--元素偏移量</title>
+    <style>
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: blanchedalmond;
+            margin: 150px;
+            position: relative;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background: blueviolet;
+            margin-left: 50px;
+            position: absolute;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 4px solid salmon;
+            margin: 20px;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="box"></div>
+
+    <script>
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        var box = document.querySelector('.box');
+
+        //offsetTop 该元素离父级节点的上边的距离
+        //offsetLeft  该元素里父级节点的左边距离   
+        console.log(father.offsetTop);  //150
+        console.log(father.offsetLeft);  //158
+
+        //当父级没定位时， 是相对于body的
+        console.log(son.offsetTop);  //150
+        console.log(son.offsetLeft);  //158
+
+        //如果父级节点定位，则是相对与父级的
+        //offsetParent  剋找到有定位的父级节点，如果所有的父级节点都没有定位，找到body
+        console.log(son.offsetParent);
+
+        //这两个元素的属性只读，不能赋值
+        console.log(box.offsetWidth); //元素的宽 padding*2+border*2+width
+        console.log(box.offsetHeight);//元素的高 padding*2+border*2+height
+    </script>
+</body>
+</html>

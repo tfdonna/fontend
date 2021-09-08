@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>突出显示</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background: #000;
+        }
+
+        ul, li {
+            list-style: none;
+            display:inline-block;
+        }
+        ul{
+            border: 1px solid white;
+            width: 640px;
+            margin: 200px 200px;
+        }
+        li {
+            margin: 5px 0px 0px 8px;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="images/001.jpg" /></li>
+        <li><img src="images/002.jpg" /></li>
+        <li><img src="images/003.jpg" /></li>
+        <li><img src="images/004.jpg" /></li>
+        <li><img src="images/005.jpg" /></li>
+        <li><img src="images/006.jpg" /></li>
+    </ul>
+
+    <script src="jquery.js"></script>
+    <script>
+        $('li').hover(function () {
+            $(this).css('opacity', 1).siblings('li').css('opacity', 0.4);
+        }).mouseleave(function () {
+            $(this).find('li').css('opacity', 1)
+        })
+    </script>
+</body>
+</html>

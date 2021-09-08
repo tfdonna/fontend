@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var score = [100, 67, 89, 45, 23, 56];
+
+        //some 查找没有 符合条件的记录，如果有，就返回true，并且结束循环，如果没有，就返回false
+        var jishu = score.some(function(value){
+            console.log(value);
+            return value <= 60;
+        })
+        console.log(jishu);
+
+        //查找一下颜色
+        var color = ['red', 'yellow', 'grey', 'purple'];
+        var mycolor = prompt('请输入颜色');
+        var type = color.some(function(value){
+            return value == mycolor;
+        })
+        console.log(type);
+    </script>
+</body>
+</html>

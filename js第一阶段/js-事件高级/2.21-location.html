@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+    <!--
+        <a href='history.back()'>fanhui</a>
+    -->
+    <script>
+        //useragent 可以判断出事pc还是移动端，事什么浏览器
+        // var btn = document.querySelector('button');
+        // btn.onclick = function(){
+            
+        // }
+
+        var btn = document.querySelector('button');
+        //1. back
+        btn[0].onclick = function(){
+            history.back();
+        }
+
+        //2. go 
+        btn[0].onclick = function(){
+            history.go(-1);
+        }
+        
+    </script>
+</body>
+</html>

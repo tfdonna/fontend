@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="please input user's name!" />
+    <button id="btn"> submit</button>
+    <script>
+        //1. 获取dom节点
+        var oBtn = document.querySelector('#btn');
+        var oInput = document.querySelector('input');
+
+        //注意：表单中 需要输入的元素不能定义后直接获取他的值，因为这个值目前话没有输入
+        //console.log(oInput.value);  //控制台没有输出
+
+        //2. 给按钮绑定事件
+        oBtn.onclick = function(){
+            console.log(oInput.value);  //获取文本框的值
+            //将oInput设置为不可用
+            oInput.disabled == true;
+            oInput.type = '...';
+        }
+        //事件分为两个阶段  1.事件绑定  2.事件触发
+
+
+    </script>
+</body>
+</html>

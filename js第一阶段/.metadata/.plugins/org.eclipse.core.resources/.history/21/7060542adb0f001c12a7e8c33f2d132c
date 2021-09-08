@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+        #box {
+            border: 2px solid green;
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button>获取彩票信息</button>
+    <div id="box"></div>
+
+    <script>
+        //获取彩票信息
+
+        window.onload = function () {
+            var oBtn = document.querySelector('button');
+            var oBox = document.querySelector('#box');
+
+            oBtn.onclick = function () {
+                //获取彩票信息
+
+                var suijiArr = getRandom(7, 1, 33);
+                console.log(suijiArr);
+                //使用 hash将随机数保存到历史记录中
+                window.location.hash = suijiArr;
+                //将随机数填写到div中
+                oBox.innerHTML = suijiArr;
+            }
+            
+            //给window 绑定 历史记录改变的事件,点击返回按钮触发事件
+            window.onhashchange = function () {
+                //获取 hash值  ,需要将#删除
+                var arr = window.location.hash.substring(1);
+                console.log(arr);
+                oBox.innerHTML = arr;
+            }
+            //count 个数 
+            //start 随机的开始值
+            //end   随机的结束值
+            function getRandom(count, start, end) {
+                var numArr = [];
+                for (var i = 0; i < count; i++) {
+                    var num1 = Math.floor(Math.random() * (end - start) + start);
+                    if(numArr.indexOf(num1) == -1){
+                    	numArr.push(num1);
+                    }else{
+                    	i--;
+                    }
+                    
+                }
+                return numArr;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿京东密码隐藏与显示</title>
+    <style>
+        .pp{
+            width: 300px;
+            height: 50px;
+            border: 1px solid gray;
+            display: flex;
+        }
+        .pp input{
+            height: 40px;
+        }
+        img{
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div class="pp">
+        <input type="password" id="password" placeholder="input your password!" />
+        <img src="../img/扇子.png">
+    </div>
+
+    <script>
+        //1. 获取dom
+        var oPwd = document.querySelector('#password');
+        var oImg = document.querySelector('img');
+
+        //创建开关效果
+        var type = true;
+        //2. 绑定事件
+        oImg.onclick = function(){
+            if(type){
+                oImg.src = '../img/剑.png';
+                oPwd.type = 'text';
+            }else{
+                oImg.src = '../img/扇子.png';
+                oPwd.type = 'password';
+            }
+            //
+            type =  !type;
+            
+        }
+    </script>
+    
+</body>
+</html>

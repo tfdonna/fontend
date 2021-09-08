@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Set 数据结构
+        //里面的数据保持唯一性，里面的值不能重复
+        let s1 = new Set();
+        console.log(s1);
+        console.log(s1.size);
+
+        let s2 = new Set([1, 2, 3, 4]);
+        console.log(s2);
+        console.log(s2.size);
+
+        //将set解构转数组
+        let arr = [...s2];
+        console.log(arr);
+
+        //set里面的数据如果重复了会怎样
+        //会默认去重
+        let s3 = new Set([1, 2, 3, 3, 4, 4, 4, 4, 5, 6]);
+        console.log(s3);
+
+        //使用set解构对数组去重
+        function quchong(arr){
+            var myset = new Set(arr);
+            return [...myset];
+        }
+        var reslut = quchong([1, 2, 3, 3, 4, 2, 4]);
+        console.log(reslut);
+
+        //给set对象添加新数据
+        s2.add('b');
+        s2.add('a');
+        console.log(s2);
+
+        //删除数据
+        s2.delete(1);
+        console.log(s2);
+
+        //找到某个成员， has判断set对象中有无这个成员
+        console.log(s2.has(3));
+
+        //清空set中的数据
+        console.log(s2.clear());
+    </script>
+</body>
+</html>

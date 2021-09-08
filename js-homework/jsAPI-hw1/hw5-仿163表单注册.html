@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .msg{
+            margin-left: 43px;
+            color: #cbcbcb;
+        }
+        .right{
+            color: green;
+            border: 1px solid green;
+        }
+        .wrong{
+            color: red;
+            border: 1px solid red;
+        }
+        .img{
+            width: 3%;
+        }
+        .blank{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        password: <input type="password" id="pwd" />
+        <div class="msg">
+            <img src="" />
+            <span>6-16位字符</span>
+        </div>
+
+    </div>
+    <script>
+        var oInput = document.querySelector('input');
+        var oImg = document.querySelector('img');
+        var oSpan = document.querySelector('span');
+
+        //绑定光标离开事件
+        oInput.onblur = function(){
+            var value = this.value;
+            var l = value.length;
+            if(l >= 6 && l <= 16){
+                oImg.src = '../img/right.png';
+                oSpan.innerHTML = '密码符合要求';
+                oSpan.style.color = 'green';
+                oInput.className = 'right';
+            }else{
+                if(l == 0){
+                    oImg.src = '';
+                    oSpan.innerHTML = '6-16位字符';
+                    oSpan.style.color = '#cbcbcb';
+                    oInput.className = 'blank';
+                }else{
+                    oImg.src = '../img/wrong.png';
+                    oSpan.innerHTML = '密码不符合要求';
+                    oSpan.style.color = 'red';
+                    oInput.className = 'wrong';
+                }
+                
+            }
+        }
+
+        //文本框中的数据为空时要有重置效果
+    </script>
+</body>
+</html>

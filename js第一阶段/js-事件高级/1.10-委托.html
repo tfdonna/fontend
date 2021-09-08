@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        /*
+        //需求：点击 ul 变红
+        var li = document.querySelectorAll('li');
+        var ul = document.querySelector('ul');
+        for(var i = 0; i < li.length; i++){
+            li[i].onclick = function(){
+                this.style.background = 'red';
+            }
+        }
+        //新增了一个li
+        var newLi = document.createElement('li');
+        newLi.innerHTML = 'newLi';
+        ul.appendChild(newLi);
+        //默认新增的li没有进行事件绑定的
+
+        */
+
+
+        //委托 写法
+        //注意：委托 就是将li的点击事件委托给了ul 
+        var ul = document.querySelector('ul');
+        ul.onclick = function(ev){
+            //console.log(31);
+            //可以用ev.target（最方便）  或者 用节点
+            ev.target.style.background = 'blue'
+        }
+        var newLi = document.createElement('li');
+        newLi.innerHTML = 'newLi';
+        ul.appendChild(newLi);
+        //好处：委托的话 对于新增的元素也有绑定好的事件
+        
+    </script>
+
+</body>
+</html>

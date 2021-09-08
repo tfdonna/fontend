@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉菜单</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .dw{
+            color: #4c4c4c;
+            width: 83px;
+        }
+        p{
+            width: 50px;
+            height: 20px;
+            padding: 12px 15px 12px 18px;
+            background-color: #edeef0;
+            text-decoration: none;
+        }
+        
+        .dw:hover p{
+            color: #ff8400;
+            background-color: #dbdddf;
+        }
+        .dw ul{
+            display: none;
+            border: 0.5px solid #ff8400;
+
+        }
+        .dw:hover ul{
+            display: block;
+        }
+        .dw ul li{
+            width: 50px;
+            height: 30px;
+            border: 0.5px solid #ff8400;
+            padding: 0 15px;
+            color: #333;
+            display: block;
+            line-height: 31px;
+            border-bottom: 1px solid #FECC5B;
+            
+        }
+        .dw ul li:hover{
+            background-color: #f5e5c2;
+            color: #ff8400;
+        }
+
+        span{
+            color: #ff8400;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="dw">
+        <p>微博 <span>^</span> </p>
+        <ul>
+            <li>私信</li>
+            <li>评论</li>
+            <li>@我</li>
+        </ul>
+    </div>
+    
+
+    
+</body>
+</html>

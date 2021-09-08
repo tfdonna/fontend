@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'; //严格模式
+        //num = 10;
+        var num = 10;    //严格模式要生命变量
+
+        //delete num; //严格模式不能删除变量
+        console.log(num);
+        function Star(){
+            this.sex = 'male';
+        }
+        // Star();   //严格模式下会报错
+        var ldr = new Star();
+        console.log(ldr.sex);
+    </script>
+    <script>
+        // num = 10;
+        // console.log(num);
+
+        // function Star(){
+        //     this.sex = 'male';
+        // }
+        // Star();
+        // var ldr = new Star();
+        // console.log(ldr.sex);
+    </script>
+</body>
+</html>

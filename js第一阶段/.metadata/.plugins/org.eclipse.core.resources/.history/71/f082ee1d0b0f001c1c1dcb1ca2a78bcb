@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+	body {
+	   margin: 0;
+	   padding: 0;
+    }
+    .box, .box2, .btn{
+        display: inline-block;
+    }
+    .box, .box2{
+        width: 100px;
+        height: 200px;
+        margin: 10px;
+    }
+    select {
+	   width: 100px;
+	   height: 200px;
+	   background: lightgrey;
+    }
+	</style>
+</head>
+<body>
+    <div class="box">
+        <select class="t1" multiple="multiple" id="first">
+            <option value="fruit">苹果</option>
+            <option value="fruit">葡萄</option>
+            <option value="fruit">荔枝</option>
+            <option value="fruit">西梅</option>
+            <option value="fruit">香蕉</option>
+        </select>
+    </div>
+    <div class="btn">
+        <button id="remove_all">«</button>
+        <button id="add_all">»</button>
+        <button id="remove">‹</button>
+        <button id="add">›</button>
+    </div>
+    <div class="box2">
+        <select class="t1" multiple="multiple" id="second"></select>
+    </div>
+    <script type="text/javascript">
+        $().ready(function () {
+        	$('#add').click(function () {
+                $('#first option:selected').remove().appendTo($('#second')).prop('selected', false);
+            })
+            $('#remove').click(function () {
+                $('#second option:selected').remove().appendTo($('#first')).prop('selected', false);
+            })
+            $('#add_all').click(function () {
+                $('#first option').remove().appendTo($('#second'));
+            })
+            $('#remove_all').click(function () {
+                $('#second option').remove().appendTo($('#first'));
+            })
+		})
+    </script>
+</body>
+</html>

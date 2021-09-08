@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+	body {
+	   margin: 0;
+	   padding: 0;
+    }
+    .box, .box2, .btn{
+        display: inline-block;
+    }
+	</style>
+</head>
+<body>
+    <div class="box">
+        <select class="t1" multiple="multiple" id="first">
+            <option value="fruit">苹果</option>
+            <option value="fruit">葡萄</option>
+            <option value="fruit">荔枝</option>
+            <option value="fruit">西梅</option>
+            <option value="fruit">香蕉</option>
+        </select>
+    </div>
+    <div class="btn">
+        <button>«</button>
+        <button>»</button>
+        <button>‹</button>
+        <button>›</button>
+    </div>
+    <div class="box2">
+        <select class="t1" multiple="multiple" id="second"></select>
+    </div>
+</body>
+</html>

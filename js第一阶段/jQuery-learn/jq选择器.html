@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div>cfvgbhnjm</div>
+  <p>12345</p>
+  <ul class="ad">
+    <li class="top">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>8
+      <ul>
+        <li>aaaa</li>
+      </ul>
+    </li>
+  </ul>
+
+  <script src="jquery.js">
+    //选择器 * 选择所有
+    console.log($('*'));
+    //并集
+    console.log($('div, p, ul'));
+
+    //交集
+    console.log($('.ad li top'));
+
+    //子级选择器  亲儿子
+    console.log($('.ad > li'));
+    //后代选择器  包括 儿子 孙子 重孙
+    console.log($('.ad li'));
+  </script>
+
+</body>
+</html>

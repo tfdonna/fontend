@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .px{
+            width: 100px;
+            height: 100px;
+            background: sandybrown;
+        }
+        .rem{
+            width: 10rem;
+            height: 10rem;
+            background: seagreen;
+        }
+        .em{
+            width: 10em;
+            height: 10em;
+            background: pink;
+        }
+        .rem1{
+            width: 100%;
+            font-size: 12px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .rem2{
+            width: 3.2rem;
+            height: 3.2rem;
+            background: seagreen;
+        }
+        
+    </style>
+    <script src=""></script>
+</head>
+<body>
+    <div class="px"> px： 绝对单位</div>
+    <!--根节点的-->
+    <div class="rem">rem：相对单位，相对于文档的根节点</div>
+    <div class="em">em: 相对单位， 相对于父节点</div>
+
+    <!--移动端使用rem可以使用所有手机屏幕-->
+    <div class="rem1">
+        <div class="rem2">rem1</div>
+        <div class="rem2">rem2</div>
+        <div class="rem2">rem3</div>
+    </div>
+
+
+    
+</body>
+</html>

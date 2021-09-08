@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建、添加节点</title>
+</head>
+<body>
+    <ul>
+        <li>old</li>
+    </ul>
+    <script>
+        //需求：动态创建新节点，添加ul中
+        //创建
+        var li = document.createElement('li');
+        //向li中添加内容
+        li.innerHTML = 'new';
+        var ul = document.querySelector('ul');
+        //将li添加到ul中
+        ul.appendChild(li);
+
+        //创建第二个节点
+        var oLi = document.createElement('li');
+        oLi.innerHTML = 'i am the best.';
+        //添加在前面
+        //参数：1.将要插入的dom元素   2.插入到该节点的上面
+        ul.insertBefore(oLi, ul.children[0]);
+
+        /*
+        appendchild : 追加元素，永远在最后面， 一个参数
+        insertBrfore ： 在某一个元素前插入某个内容， 两个参数
+        */
+
+    </script>
+</body>
+</html>

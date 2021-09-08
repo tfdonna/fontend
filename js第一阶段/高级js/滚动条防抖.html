@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        .gotop{
+            width: 50px;
+            height: 50px;
+            border: 1px solid salmon;
+            line-height: 50px;
+            text-align: center;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            border-radius: 50%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="gotop">↑</div>
+
+    <script>
+        var gotop = document.querySelector('.gotop');
+
+        window.onscroll = function(){
+            //3. 获取离页面顶部的距离
+            var top = document.documentElement.scrollTop;
+            console.log(top);
+            if(top >= 200){
+                gotop.style.display = 'block';
+            }
+        }
+        /*
+        为什么需要使用 防抖？
+        滚动事件，用户只要动一下关东条，滚动事件就会出发很多次严重影响性能
+
+        防抖：
+        让某个事件期限内，事件处理函数只执行一次
+        可以用定时器
+        */
+
+        //使用防抖函数优化
+        window.onscroll = debounce(go, 200);
+        function go(){
+            var top = document.documentElement.scrollTop;
+            console.log(top);
+            if(top >= 200){
+                gotop.style.display = 'block';
+            }
+        }
+        //封装一个防抖函数
+        //参数1：回调函数    参数2：延时时间
+        function debounce(fn, delay){
+            var timer = null; //定时器初始值
+            return function(){//闭包
+                if(timer){  //定时器存在，先清除，再生成一个新的
+                    clearTimeout(timer);
+                    timer = setTimeout(fn, delay);
+                }else{ //定时器不存在，生成定时器
+                    timer = setTimeout(fn, delay);
+                }
+            }
+        }
+        /*
+        思考：
+        如果在200ms内一直触发这个时间，就会导致函数没办法执行
+        希望：设计一个开关一样的东西，让某个函数执行一次后，在某个时间段内失效
+        过了这段时间再开始激活状态（类似游戏放大招）
+        */
+    </script>
+</body>
+</html>

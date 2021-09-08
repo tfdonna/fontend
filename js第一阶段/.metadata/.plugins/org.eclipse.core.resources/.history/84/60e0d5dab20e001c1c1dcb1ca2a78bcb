@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <div id="mydiv" title="天气很好">div</div>
+    
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        //property
+        console.log($('div').prop('title'));
+    </script>
+</body>
+</html>

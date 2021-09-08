@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        .click{
+            line-height: 50px;
+            width: 200px;
+            height: 50px;
+            margin: auto;
+            position: relative;
+            z-index: 101;
+            background: white;
+        }
+        .box{
+            width: 500px;
+            height: 300px;
+            border: 1px solid lightslategrey;
+            border-radius: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -250px;
+            margin-top: -150px;
+            display: none;
+        }
+        .close{
+            float: right;
+            font-size: 20px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .bg{
+            background: rgb(212, 165, 165,0.5);
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="click">点击，显示模态框</div>
+    <div class="box" id="box">
+        我是一个框框
+        <button class="close" id="close">x</button>
+    </div>
+    <!--半透明遮罩层-->
+    <div class="bg" id="bg"></div>
+
+    <script>
+        var click = document.querySelector('.click');
+        var box = document.querySelector('.box');
+        var close = document.querySelector('.close');
+        var bg = document.querySelector('.bg')
+
+        //2.绑定点击事件
+        click.onclick = function(){
+            box.style.display = 'block';
+            bg.style.display = 'block';
+        }
+        close.onclick = function(){
+            box.style.display = 'none';
+            bg.style.display = 'none';
+        }
+        //4.给模态框写拖拽效果
+        box.addEventListener('mousedown', function(){
+            //5.获取 鼠标按下的点在登陆框中的位置
+            var x = ev.pageX - box.offsetLeft;
+            var y = ev.pageY - box.offsetTop;
+
+            document.addEventListener('mousemove', move())
+            function move(ev){
+                console.log(ev.pageX - x);
+                console.log(ev.pageY - y);
+                //7.将这个值赋值给box的top和left
+                box.style.left = ev.pageX - x + 'px';
+                box.style.top = ev.pageY - y + 'px';
+            }
+            //8.鼠标弹起时，移除鼠标移动事件
+            document.addEventListener('mouseup', function(){
+                document.removeEventListener('mousemove',move())
+            })
+        })
+
+        //优化：1.点击到登录框的头部才允许拖拽
+        //2. 拖动的位置 需要调整 
+        
+
+    </script>
+</body>
+</html>

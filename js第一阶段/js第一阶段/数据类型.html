@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        简单数据类型：string、num、boolean、undefined、null
+        栈：简单的数据类型放在栈里，如变量啥的
+        堆：复杂对象，若不释放由垃圾回收机制回收
+        */
+       var num = 12;
+       var str = 'abc';
+       //简单数据类型，放在栈里
+
+       var obj = {name:'simon', age:'30'};
+       //复杂数据放在堆里，栈中攒的是堆的其实内存地址
+
+       //简单数据传参
+       function fn(a){
+           a++;
+           console.log(a); //11
+       }
+       var x = 10;
+       fn(x);
+       //函数中没有return，‘a++’没有传出来
+       console.log(x);//10
+
+
+       //复杂数据传参
+       function Person(name){
+           this.name = name;
+       }
+       function f1(x){
+           console.log(x.name); //2. 刘
+           x.name = '张学友';
+           console.log(x.name);   //3. 张
+       }
+       var p = new Person('刘德华');
+       console.log(p.name); //1. 刘
+       f1(p);
+       console.log(p.name); //4. 张
+
+
+       //深浅拷贝
+
+       //浅拷贝（当复杂数据在直接赋值给另一个数据，我们只拷贝了数据指针，在内存没有开辟新的空间）
+       var arr1 = [1,2,3,4];
+       var arr2 = arr1;
+       arr2[3] = 'lily';
+       console.log(arr1);//[1, 2, 3, "lily"]   内存中的地址一样
+       console.log(arr2);//[1, 2, 3, "lily"]
+
+       //深拷贝  赋值时不止拷贝了内存空间，还在内存中生成了新的内存空间
+       //数组 arr1 与数组 arr2 没有关系，所以修改arr2的值不会对arr1有影响
+       var arr1 = [1,2,3,4];
+       var arr2 = [];
+       for (var i  = 0; i < arr1.length; i++){
+           arr2[i] = arr1[i];
+       }
+       arr2[3] = 'lily';
+       console.log(arr1);//[1, 2, 3, 4]
+       console.log(arr2);//[1, 2, 3, "lily"] 
+    </script>
+</body>
+</html>

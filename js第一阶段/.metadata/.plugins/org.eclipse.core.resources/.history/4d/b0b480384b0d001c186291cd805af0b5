@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        div {
+	       width: 100px;
+	       height: 100px;
+	       background: blue;
+        }
+    </style>
+</head>
+<body>
+    <button>hide</button>
+    <button>show</button>
+    <button>toggle</button>
+    <div></div>
+    
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+        	//隐藏
+			$('button').eq(0).click(function () {
+				//$('div').hide();
+				$('div').slideDown();
+			})
+			//显示
+			$('button').eq(1).click(function () {
+                //$('div').show();
+				$('div').slideUp();
+            })
+            //切换
+            $('button').eq(2).click(function () {
+                //$('div').toggle();
+            	$('div').slideToggle();
+            })
+		})
+    </script>
+</body>
+</html>

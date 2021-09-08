@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .face{
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%);
+            border-radius: 0 0 70px 70px;
+            background:yellow;
+            box-shadow: inset 0 0 5px #999;
+        }
+        .eye{
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: inset 0 0 5px #999;
+        }
+        .face .eye:first-child{
+            top:26%;
+            left: 12%;
+        }
+        .face .eye:last-child{
+            top:26%;
+            right: 12%;
+        }
+        .eye::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            width: 50%;
+            height: 50%;
+            background: #000;
+            border-radius: 50%;
+            box-shadow: inset 0 0 3px white, inset 0 0 3px white ;
+        }
+    </style>
+</head>
+<body>
+    <div class="face">
+        <div class="eye"></div>
+        <div class="eye"></div>
+    </div>
+
+    <script>
+        let eye = document.querySelectorAll('.eye');
+        window.addEventListener('mousemove', function(ev){
+            eye.forEach(function(eye){
+                let angle = Math.atan2(
+                    ev.clientX - eye.getBoundingClientRect().left - eye.clientLeft/2,
+                    ev.clientY - eye.getBoundingClientRect().top - eye.clientTop/2
+                )
+                let rot = ((angle * 180) / Math.PI) * -1 -90;
+                eye.style.transform = 'rotate(${rot}deg)';
+            })
+        })
+    </script>
+</body>
+</html>

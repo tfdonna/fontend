@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+        }
+
+        li {
+            width: 100px;
+            height: 50px;
+            background: lightblue;
+            margin: 10px;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 3px dotted red;
+            margin-left: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <!-- draggable="true"  设置dom节点可以拖动 -->
+        <li draggable="true">1</li>
+        <li draggable="true">2</li>
+        <li draggable="true">3</li>
+    </ul>
+
+    <div class="box"></div>
+    <script>
+        window.onload = function () {
+            //获取dom节点
+            var oUl = document.querySelector('ul');
+            var aLi = oUl.querySelectorAll('li');
+            var oBox = document.querySelector('.box');
+
+            //拖拽元素
+            for (var i = 0; i < aLi.length; i++) {
+                //1.开始拖拽
+                aLi[i].ondragstart = function (ev) {
+                    this.style.background = 'pink';
+                    //拖拽时传递参数
+                    ev.dataTransfer.setData('text', this.innerHTML);
+                }
+                aLi[i].ondrag = function (){
+                    this.remove();
+                }
+            }
+
+            //进入拖拽的目的地
+            oBox.ondragenter = function () {
+                this.style.background = "orange";
+            }
+            //想要 drop事件触发，必须在dragover 阻止默认事件
+            oBox.ondragover = function (ev) {
+                ev.preventDefault();
+            }
+            //默认 即使在 目的地的上面释放鼠标，也不会触发 drop；   ***
+            oBox.ondrop = function (ev) {
+                console.log('在目的地上释放了鼠标');
+                console.log(ev.dataTransfer.getData('text'));
+                var oLi = document.createElement('li');
+                //ev.dataTransfer.getData 获取拖拽的参数
+                oLi.innerHTML = ev.dataTransfer.getData('text');
+                oBox.appendChild(oLi);
+            }
+            //从目的地离开
+            oBox.ondragleave = function () {
+                this.style.background = 'lightgreen';
+            }
+        }
+        //拖拽顺序：   dragstart   drag  dragenter  dragover  dragleave  dragend
+    </script>
+</body>
+
+</html>

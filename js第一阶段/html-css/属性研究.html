@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css样式属性研究</title>
+    <style>
+        body{
+            background-image: url('../img/岭.png') ;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: right top;
+            margin-right: 200px;
+            background-attachment: fixed;
+            /* background-blend-mode: color; */
+        }
+        #myDIV{
+            animation: mymove 5s infinite;
+        }
+        @keyframes mymove {
+            50% {text-shadow: 10px 20px 30px blue;}
+        }
+        fieldset{
+            border-bottom-left-radius: 2em;
+        }
+    </style>
+</head>
+<body>
+    <!--1.background-attachment-->
+    <div>
+        <fieldset>
+            <legend><h3>1. background-attachment</h3></legend>
+            <p>该属性可以指定背景图是滚动还是固定的</p>
+            <p>fixed: 固定     scroll: 滚动</p>
+            <p>background-blend-mode属性： 改变图像颜色、亮度之类的</p>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <legend><h3>2. @keyframes mymove   &&  animation</h3></legend>
+            <p>可以用于制作动画，从某一个值渐变到另一个值</p>
+            <p>animation将动画与div元素绑定</p>
+            <div id="myDIV">
+                <h1>难寻少年时，总有少年来</h1>
+            </div>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <legend><h3>3. align-content</h3></legend>
+            <p>将行打包到弹性容器中央</p>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <legend><h3></h3></legend>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <legend><h3></h3></legend>
+        </fieldset>
+    </div>
+    
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+    <p>难寻少年时，总有少年来</p>
+</body>
+</html>
